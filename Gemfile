@@ -33,10 +33,8 @@ group :doc do
 end
 
 # Use Devise for users
-group :devise do
-  gem 'devise'
-  gem 'omniauth'
-end
+gem 'devise'
+gem 'omniauth'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
