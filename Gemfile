@@ -32,6 +32,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'machinist'
+  gem 'shoulda'
+end
+
 # Use Devise for users
 gem 'devise'
 gem 'omniauth'
