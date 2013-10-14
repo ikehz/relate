@@ -11,6 +11,7 @@ require 'machinist/active_record'
 User.blueprint do |user|
   email  { "user#{sn}@example.com" }
   username { "user#{sn}" }
+  name { "User Person" }
   password  { "password#{sn}" }
   confirmed_at { Time.now }
 end
