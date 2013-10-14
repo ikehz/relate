@@ -43,6 +43,14 @@ class UserTest < ActiveSupport::TestCase
       end
     end
 
+    context "with a duplicate username" do
+      should "be invalid" do
+        v = User.make username: @u.username
+        assert v.invalid?, "#{v.username} should be a duplicate, and therefore invalid, username"
+        assert v.errors[:username].any?, "#{v.username} should be a duplicate, invalid username"
+      end
+    end
+
     context "with a valid name" do
       should "be valid" do
         ['User User', 'UserUser', ''].each do |name|
@@ -59,6 +67,13 @@ class UserTest < ActiveSupport::TestCase
           assert @u.invalid?, "#{name} should be an invalid name"
           assert @u.errors[:name].any?, "#{name} should be an invalid name"
         end
+      end
+    end
+
+    context "with a duplicate name" do
+      should "be valid" do
+        v = User.make name: @u.name
+        assert v.valid?, "#{v.name} should be a duplicate, but valid, name"
       end
     end
 
