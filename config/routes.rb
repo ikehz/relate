@@ -1,6 +1,8 @@
 Leucurus::Application.routes.draw do
 
+  # TODO does this need to be here?
   get "home/index"
+
   devise_for :users, controllers: { registrations: "registrations" }
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,6 +10,8 @@ Leucurus::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  resources :conversations
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
