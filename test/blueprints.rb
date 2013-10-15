@@ -15,3 +15,7 @@ User.blueprint do |user|
   password  { "password#{sn}" }
   confirmed_at { Time.now }
 end
+
+Conversation.blueprint do |conversation|
+  user
+end
