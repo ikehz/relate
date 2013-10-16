@@ -10,6 +10,9 @@ gem 'rails', '4.0.0'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
 
+# Use Grant for model-level security
+gem 'grant'
+
 # Use Devise for users
 gem 'devise'
 gem 'omniauth'
