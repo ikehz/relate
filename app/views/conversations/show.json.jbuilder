@@ -1,1 +1,1 @@
-json.extract! @conversation, :user_id, :notes, :created_at, :updated_at
+json.extract! @conversation, :notes, :created_at, :updated_at
