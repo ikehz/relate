@@ -5,7 +5,9 @@ class UserTest < ActiveSupport::TestCase
   context "a user" do
 
     setup do
-      @u = User.make!
+      without_grant do
+        @u = User.make!
+      end
     end
 
     context "that is valid" do
