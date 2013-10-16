@@ -6,6 +6,8 @@ require File.expand_path(File.dirname(__FILE__) + '/blueprints')
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
+  include Grant::Status
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
