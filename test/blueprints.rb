@@ -20,3 +20,8 @@ Conversation.blueprint do |conversation|
   user
   notes { "Some notes" }
 end
+
+Contact.blueprint do |contact|
+  user
+  name { "Contact Person" }
+end
