@@ -17,35 +17,35 @@ class ConversationTest < ActiveSupport::TestCase
     end
 
     should "find a conversation that is theirs" do
-      assert_nothing_raised {Conversation.find(@c_u.id)}
+      assert_nothing_raised { Conversation.find(@c_u.id) }
     end
 
     should "not find a conversation that is not theirs" do
-      assert_raises(Grant::Error) {Conversation.find(@c_v.id)}
+      assert_raises(Grant::Error) { Conversation.find(@c_v.id) }
     end
 
     should "create a conversation that is theirs" do
-      assert_nothing_raised {Conversation.make!(user: @u)}
+      assert_nothing_raised { Conversation.make!(user: @u) }
     end
 
     should "not create a conversation that is not theirs" do
-      assert_raises(Grant::Error) {Conversation.make!(user: @v)}
+      assert_raises(Grant::Error) { Conversation.make!(user: @v) }
     end
 
     should "update a conversation that is theirs" do
-      assert_nothing_raised {@c_u.save}
+      assert_nothing_raised { @c_u.save }
     end
 
     should "not update a conversation that is not theirs" do
-      assert_raises(Grant::Error) {@c_v.save}
+      assert_raises(Grant::Error) { @c_v.save }
     end
 
     should "destroy a conversation that is theirs" do
-      assert_nothing_raised {@c_u.destroy}
+      assert_nothing_raised { @c_u.destroy }
     end
 
     should "not destroy a conversation that is not theirs" do
-      assert_raises(Grant::Error) {@c_v.destroy}
+      assert_raises(Grant::Error) { @c_v.destroy }
     end
 
   end
