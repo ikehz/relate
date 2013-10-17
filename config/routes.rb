@@ -12,6 +12,7 @@ Leucurus::Application.routes.draw do
   root 'home#index'
 
   resources :conversations
+  resources :contacts
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
