@@ -1,10 +1,14 @@
 class ConversationsController < ApplicationController
+  # only allow access to this controller if a user is signed in
+  #
+  # this should come before other callbacks so as to avoid errors popping up
+  before_action :authenticate_user!
   before_action :set_conversation, only: [:show, :edit, :update, :destroy]
 
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.all
+    @conversations = Conversation.where(user: current_user)
   end
 
   # GET /conversations/1

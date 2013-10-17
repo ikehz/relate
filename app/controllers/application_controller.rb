@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def set_grant_user_current_user
     Grant::User.current_user = @current_user
   end
+
+  rescue_from Grant::Error do |error|
+    head :forbidden
+  end
 end
