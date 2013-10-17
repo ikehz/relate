@@ -18,4 +18,5 @@ end
 
 Conversation.blueprint do |conversation|
   user
+  notes { "Some notes" }
 end

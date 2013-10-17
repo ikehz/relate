@@ -9,43 +9,60 @@ class ConversationTest < ActiveSupport::TestCase
     setup do
       without_grant do
         @u = User.make!
-        @c_u = Conversation.make!(user: @u)
-        @v = User.make!
-        @c_v = Conversation.make!(user: @v)
         Grant::User.current_user = @u
       end
     end
 
-    should "find a conversation that is theirs" do
-      assert_nothing_raised { Conversation.find(@c_u.id) }
+    context "for a conversation that is theirs" do
+
+      setup do
+        without_grant do
+          @c = Conversation.make!(user: @u)
+        end
+      end
+
+      should "find that conversation" do
+        assert_nothing_raised { Conversation.find(@c.id) }
+      end
+
+      should "create a conversation that is theirs" do
+        assert_nothing_raised { Conversation.make!(user: @u) }
+      end
+
+      should "update that conversation" do
+        assert_nothing_raised { @c.save }
+      end
+
+      should "destroy that conversation" do
+        assert_nothing_raised { @c.destroy }
+      end
+
     end
 
-    should "not find a conversation that is not theirs" do
-      assert_raises(Grant::Error) { Conversation.find(@c_v.id) }
-    end
+    context "for a conversation that is not theirs" do
 
-    should "create a conversation that is theirs" do
-      assert_nothing_raised { Conversation.make!(user: @u) }
-    end
+      setup do
+        without_grant do
+          @c = Conversation.make!
+        end
+      end
 
-    should "not create a conversation that is not theirs" do
-      assert_raises(Grant::Error) { Conversation.make!(user: @v) }
-    end
+      should "not find that conversation" do
+        assert_raises(Grant::Error) { Conversation.find(@c.id) }
+      end
 
-    should "update a conversation that is theirs" do
-      assert_nothing_raised { @c_u.save }
-    end
+      should "not create a conversation that is not theirs" do
+        assert_raises(Grant::Error) { Conversation.make! }
+      end
 
-    should "not update a conversation that is not theirs" do
-      assert_raises(Grant::Error) { @c_v.save }
-    end
+      should "not update that conversation" do
+        assert_raises(Grant::Error) { @c.save }
+      end
 
-    should "destroy a conversation that is theirs" do
-      assert_nothing_raised { @c_u.destroy }
-    end
+      should "not destroy that conversation" do
+        assert_raises(Grant::Error) { @c.destroy }
+      end
 
-    should "not destroy a conversation that is not theirs" do
-      assert_raises(Grant::Error) { @c_v.destroy }
     end
 
   end
