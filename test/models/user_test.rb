@@ -53,32 +53,6 @@ class UserTest < ActiveSupport::TestCase
       end
     end
 
-    context "with a valid name" do
-      should "be valid" do
-        ['User User', 'UserUser', ''].each do |name|
-          @u.name = name
-          assert @u.valid?, "#{name} should be a valid name"
-        end
-      end
-    end
-
-    context "with an invalid name" do
-      should "be invalid" do
-        ['\u', 'u@u', 'U-', "u\n"].each do |name|
-          @u.name = name
-          assert @u.invalid?, "#{name} should be an invalid name"
-          assert @u.errors[:name].any?, "#{name} should be an invalid name"
-        end
-      end
-    end
-
-    context "with a duplicate name" do
-      should "be valid" do
-        v = User.make name: @u.name
-        assert v.valid?, "#{v.name} should be a duplicate, but valid, name"
-      end
-    end
-
   end
 
 end

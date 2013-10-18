@@ -15,5 +15,4 @@ class User < ActiveRecord::Base
   # grant(:create, :update, :destroy) { |user, model, action| user == model }
 
   validates :username, presence: true, format: { with: /\A[0-9a-z_\-]+\z/ }, uniqueness: true
-  validates :name, format: { with: /\A[A-Za-z ]*\z/ }
 end
