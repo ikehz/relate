@@ -23,7 +23,7 @@ class ContactsControllerTest < ActionController::TestCase
 
     should "not create contact" do
       assert_no_difference('Contact.count') do
-        post :create, contact: { name: @c.name, user_id: @c.user_id }
+        post :create, contact: { name: @c.name }
       end
       assert_redirected_to new_user_session_path
     end
@@ -39,7 +39,7 @@ class ContactsControllerTest < ActionController::TestCase
     end
 
     should "not update contact" do
-      patch :update, id: @c, contact: { name: @c.name, user_id: @c.user_id }
+      patch :update, id: @c, contact: { name: @c.name }
       assert_redirected_to new_user_session_path
     end
 
@@ -73,7 +73,7 @@ class ContactsControllerTest < ActionController::TestCase
 
     should "create contact" do
       assert_difference('Contact.count') do
-        post :create, contact: { name: @c.name, user_id: @u }
+        post :create, contact: { name: @c.name }
       end
       assert_redirected_to contact_path(assigns(:contact))
     end
@@ -97,7 +97,7 @@ class ContactsControllerTest < ActionController::TestCase
       end
 
       should "update contact" do
-        patch :update, id: @c, contact: { name: @c.name, user_id: @c.user_id }
+        patch :update, id: @c, contact: { name: @c.name }
         assert_redirected_to contact_path(assigns(:contact))
       end
 
@@ -123,7 +123,7 @@ class ContactsControllerTest < ActionController::TestCase
       end
 
       should "be forbidden to update contact" do
-        patch :update, id: @c, contact: { name: @c.name, user_id: @c.user_id }
+        patch :update, id: @c, contact: { name: @c.name }
         assert_response 403
       end
 
