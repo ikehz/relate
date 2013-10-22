@@ -17,8 +17,9 @@ gem 'grant'
 gem 'devise'
 gem 'omniauth'
 
-# Use Simple Form for forms
+# Use Simple Form and Cocoon for forms
 gem 'simple_form'
+gem 'cocoon'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
