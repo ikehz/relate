@@ -25,3 +25,9 @@ Contact.blueprint do |contact|
   user
   name { "Contact Person" }
 end
+
+Participation.blueprint do |participation|
+  user
+  contact { Contact.make(user: object.user) }
+  conversation { Conversation.make(user: object.user) }
+end
