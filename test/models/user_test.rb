@@ -2,6 +2,14 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
+  setup do
+    without_grant do
+      Grant::User.current_user = @u = User.make!
+    end
+  end
+
+  # validations
+
   context "a user" do
 
     setup do

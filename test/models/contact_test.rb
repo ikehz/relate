@@ -2,74 +2,41 @@ require 'test_helper'
 
 class ContactTest < ActiveSupport::TestCase
 
+  setup do
+    without_grant do
+      Grant::User.current_user = @u = User.make!
+    end
+  end
+
   # security
 
-  context "a user" do
+  context "a contact that belongs to the current user" do
 
     setup do
       without_grant do
-        @u = User.make!
-        Grant::User.current_user = @u
+        @c = Contact.make!(user: @u)
       end
     end
 
-    context "for a contact that is theirs" do
-
-      setup do
-        without_grant do
-          @c = Contact.make!(user: @u)
-        end
-      end
-
-      should "find that contact" do
-        assert_nothing_raised { Contact.find(@c.id) }
-      end
-
-      should "create a contact that is theirs" do
-        assert_nothing_raised { Contact.make!(user: @u) }
-      end
-
-      should "update that contact" do
-        assert_nothing_raised { @c.save }
-      end
-
-      should "destroy that contact" do
-        assert_nothing_raised { @c.destroy }
-      end
-
+    should "be found" do
+      assert_nothing_raised { Contact.find(@c.id) }
     end
 
-    context "for a contact that is not theirs" do
+    should "be created" do
+      assert_nothing_raised { Contact.make!(user: @u) }
+    end
 
-      setup do
-        without_grant do
-          @c = Contact.make!
-        end
-      end
+    should "be updated" do
+      assert_nothing_raised { @c.save }
+    end
 
-      should "not find that contact" do
-        assert_raises(Grant::Error) { Contact.find(@c.id) }
-      end
-
-      should "not create a contact that is not theirs" do
-        assert_raises(Grant::Error) { Contact.make! }
-      end
-
-      should "not update that contact" do
-        assert_raises(Grant::Error) { @c.save }
-      end
-
-      should "not destroy that contact" do
-        assert_raises(Grant::Error) { @c.destroy }
-      end
-
+    should "be destroyed" do
+      assert_nothing_raised { @c.destroy }
     end
 
   end
 
-  # validations
-
-  context "a contact" do
+  context "a contact that does not belong to the current user" do
 
     setup do
       without_grant do
@@ -77,21 +44,52 @@ class ContactTest < ActiveSupport::TestCase
       end
     end
 
-    context "that is valid" do
-      should "be valid" do
-        assert @c.valid?
+    should "not be found" do
+      assert_raises(Grant::Error) { Contact.find(@c.id) }
+    end
+
+    should "not be created" do
+      assert_raises(Grant::Error) { Contact.make! }
+    end
+
+    should "not be updated" do
+      assert_raises(Grant::Error) { @c.save }
+    end
+
+    should "not be destroyed" do
+      assert_raises(Grant::Error) { @c.destroy }
+    end
+
+  end
+
+  # validations
+
+  context "a contact that belongs to the current user" do
+
+    setup do
+      without_grant do
+        @c = Contact.make!(user: @u)
       end
     end
 
-    context "that is empty" do
-      setup do
+    should "be valid" do
+      assert @c.valid?
+    end
+
+  end
+
+  context "a contact that is empty" do
+
+    setup do
+      without_grant do
         @c_empty = Contact.new
       end
-      should "be invalid" do
-        assert @c_empty.invalid?
-        assert @c_empty.errors[:user].any?
-        assert @c_empty.errors[:name].any?
-      end
+    end
+
+    should "be invalid" do
+      assert @c_empty.invalid?
+      assert @c_empty.errors[:user].any?
+      assert @c_empty.errors[:name].any?
     end
 
   end
