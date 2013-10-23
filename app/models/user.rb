@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :contacts, dependent: :destroy
   has_many :conversations, dependent: :destroy
-  has_many :participations, dependent: :destroy
+  has_many :participants, dependent: :destroy
 
   # Include default devise modules. Others available are:
   devise :database_authenticatable, :registerable,

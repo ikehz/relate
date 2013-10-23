@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ParticipationTest < ActiveSupport::TestCase
+class ParticipantTest < ActiveSupport::TestCase
 
   setup do
     without_grant do
@@ -10,20 +10,20 @@ class ParticipationTest < ActiveSupport::TestCase
 
   # security
 
-  context "a participation that belongs to the current user" do
+  context "a participant that belongs to the current user" do
 
     setup do
       without_grant do
-        @p = Participation.make!(user: @u)
+        @p = Participant.make!(user: @u)
       end
     end
 
     should "be found" do
-      assert_nothing_raised { Participation.find(@p.id) }
+      assert_nothing_raised { Participant.find(@p.id) }
     end
 
     should "be created" do
-      assert_nothing_raised { Participation.make!(user: @u) }
+      assert_nothing_raised { Participant.make!(user: @u) }
     end
 
     should "be updated" do
@@ -36,20 +36,20 @@ class ParticipationTest < ActiveSupport::TestCase
 
   end
 
-  context "a participation that does not belong to the current user" do
+  context "a participant that does not belong to the current user" do
 
     setup do
       without_grant do
-        @p = Participation.make!
+        @p = Participant.make!
       end
     end
 
     should "not be found" do
-      assert_raises(Grant::Error) { Participation.find(@p.id) }
+      assert_raises(Grant::Error) { Participant.find(@p.id) }
     end
 
     should "not be created" do
-      assert_raises(Grant::Error) { Participation.make! }
+      assert_raises(Grant::Error) { Participant.make! }
     end
 
     should "not be updated" do
@@ -64,11 +64,11 @@ class ParticipationTest < ActiveSupport::TestCase
 
   # validations
 
-  context "a participation that belongs to the current user" do
+  context "a participant that belongs to the current user" do
 
     setup do
       without_grant do
-        @p = Participation.make!(user: @u)
+        @p = Participant.make!(user: @u)
       end
     end
 
@@ -78,11 +78,11 @@ class ParticipationTest < ActiveSupport::TestCase
 
   end
 
-  context "a participation that is empty" do
+  context "a participant that is empty" do
 
     setup do
       without_grant do
-        @p_empty = Participation.new
+        @p_empty = Participant.new
       end
     end
 
