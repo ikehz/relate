@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.where(user: current_user)
+    @conversations = Conversation.where(owner: current_user)
   end
 
   # GET /conversations/1
@@ -29,7 +29,7 @@ class ConversationsController < ApplicationController
   # POST /conversations.json
   def create
     @conversation = Conversation.new(conversation_params)
-    @conversation.user = current_user
+    @conversation.owner = current_user
 
     respond_to do |format|
       if @conversation.save

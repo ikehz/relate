@@ -14,7 +14,7 @@ class ContactTest < ActiveSupport::TestCase
 
     setup do
       without_grant do
-        @c = Contact.make!(user: @u)
+        @c = Contact.make!(owner: @u)
       end
     end
 
@@ -23,7 +23,7 @@ class ContactTest < ActiveSupport::TestCase
     end
 
     should "be created" do
-      assert_nothing_raised { Contact.make!(user: @u) }
+      assert_nothing_raised { Contact.make!(owner: @u) }
     end
 
     should "be updated" do
@@ -68,7 +68,7 @@ class ContactTest < ActiveSupport::TestCase
 
     setup do
       without_grant do
-        @c = Contact.make!(user: @u)
+        @c = Contact.make!(owner: @u)
       end
     end
 
@@ -88,7 +88,7 @@ class ContactTest < ActiveSupport::TestCase
 
     should "be invalid" do
       assert @c_empty.invalid?
-      assert @c_empty.errors[:user].any?
+      assert @c_empty.errors[:owner].any?
       assert @c_empty.errors[:name].any?
     end
 

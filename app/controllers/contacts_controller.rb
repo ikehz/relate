@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.where(user: current_user)
+    @contacts = Contact.where(owner: current_user)
   end
 
   # GET /contacts/1
@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-    @contact.user = current_user
+    @contact.owner = current_user
 
     respond_to do |format|
       if @contact.save

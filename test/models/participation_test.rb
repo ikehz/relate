@@ -14,7 +14,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
     setup do
       without_grant do
-        @p = Participant.make!(user: @u)
+        @p = Participant.make!(owner: @u)
       end
     end
 
@@ -23,7 +23,7 @@ class ParticipantTest < ActiveSupport::TestCase
     end
 
     should "be created" do
-      assert_nothing_raised { Participant.make!(user: @u) }
+      assert_nothing_raised { Participant.make!(owner: @u) }
     end
 
     should "be updated" do
@@ -68,7 +68,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
     setup do
       without_grant do
-        @p = Participant.make!(user: @u)
+        @p = Participant.make!(owner: @u)
       end
     end
 
@@ -88,7 +88,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
     should "be invalid" do
       assert @p_empty.invalid?
-      assert @p_empty.errors[:user].any?
+      assert @p_empty.errors[:owner].any?
       assert @p_empty.errors[:contact].any?
       assert @p_empty.errors[:conversation].any?
     end

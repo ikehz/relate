@@ -82,7 +82,7 @@ class ContactsControllerTest < ActionController::TestCase
 
       setup do
         without_grant do
-          @c.update(user: @u)
+          @c.update(owner: @u)
         end
       end
 

@@ -17,17 +17,17 @@ User.blueprint do |user|
 end
 
 Conversation.blueprint do |conversation|
-  user
+  owner
   notes { "Some notes" }
 end
 
 Contact.blueprint do |contact|
-  user
+  owner
   name { "Contact Person" }
 end
 
 Participant.blueprint do |participant|
-  user
-  contact { Contact.make(user: object.user) }
-  conversation { Conversation.make(user: object.user) }
+  owner
+  contact { Contact.make(owner: object.owner) }
+  conversation { Conversation.make(owner: object.owner) }
 end
