@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.where(owner: current_user)
+    @contacts = Contact.owned_by(current_user)
   end
 
   # GET /contacts/1

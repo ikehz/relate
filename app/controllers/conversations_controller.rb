@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.where(owner: current_user)
+    @conversations = Conversation.owned_by(current_user)
   end
 
   # GET /conversations/1
