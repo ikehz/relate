@@ -17,6 +17,9 @@ gem 'grant'
 gem 'devise'
 gem 'omniauth'
 
+# Use HAML for views
+gem 'haml'
+
 # Use Simple Form and Cocoon for forms
 gem 'simple_form'
 gem 'cocoon'

@@ -49,6 +49,8 @@ GEM
     execjs (2.0.2)
     grant (2.1.0)
       activerecord (> 3.0.0)
+    haml (4.0.3)
+      tilt
     hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.5)
@@ -145,6 +147,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   grant
+  haml
   jbuilder (~> 1.2)
   jquery-rails
   machinist
