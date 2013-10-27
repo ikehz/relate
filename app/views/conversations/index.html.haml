@@ -4,6 +4,7 @@
   %thead
     %tr
       %th Date
+      %th Participants
       %th Notes
       %th
       %th
@@ -13,6 +14,7 @@
     - @conversations.each do |conversation|
       %tr
         %td= conversation.date
+        %td= conversation.contacts.map(&:name).join(", ")
         %td= conversation.notes
         %td= link_to 'Show', conversation
         %td= link_to 'Edit', edit_conversation_path(conversation)

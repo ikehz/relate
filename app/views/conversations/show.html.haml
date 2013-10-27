@@ -3,6 +3,10 @@
   = @conversation.date
 
 %p
+  %strong Participants:
+  = @conversation.contacts.map(&:name).join(", ")
+
+%p
   %strong Notes:
   = @conversation.notes
 
