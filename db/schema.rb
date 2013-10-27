@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023163336) do
+ActiveRecord::Schema.define(version: 20131025214401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20131023163336) do
   add_index "conversations", ["owner_id"], name: "index_conversations_on_owner_id", using: :btree
 
   create_table "participants", force: true do |t|
-    t.integer  "owner_id",        null: false
     t.integer  "contact_id"
     t.integer  "conversation_id"
     t.datetime "created_at"
@@ -44,7 +43,6 @@ ActiveRecord::Schema.define(version: 20131023163336) do
 
   add_index "participants", ["contact_id"], name: "index_participants_on_contact_id", using: :btree
   add_index "participants", ["conversation_id"], name: "index_participants_on_conversation_id", using: :btree
-  add_index "participants", ["owner_id"], name: "index_participants_on_owner_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
