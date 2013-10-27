@@ -6,4 +6,6 @@ class Conversation < ActiveRecord::Base
   accepts_nested_attributes_for :participants, allow_destroy: true, reject_if: :all_blank
 
   grant(:find, :create, :update, :destroy) { |user, model, action| model.owned_by? user }
+
+  validates :date, presence: true
 end
