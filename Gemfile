@@ -20,6 +20,9 @@ gem 'omniauth'
 # Use HAML for views
 gem 'haml'
 
+# Use bootstrap-sass for Bootstrap framework
+gem 'bootstrap-sass'
+
 # Use Simple Form and Cocoon for forms
 gem 'simple_form'
 gem 'cocoon'
