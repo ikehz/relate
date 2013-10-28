@@ -76,6 +76,21 @@ class ParticipantTest < ActiveSupport::TestCase
       assert @p.valid?
     end
 
+    context "that is a duplicate of another contact" do
+
+      setup do
+        without_grant do
+          @p_dup = Participant.new(contact: @p.contact, conversation: @p.conversation)
+        end
+      end
+
+      should "be invalid" do
+        assert @p_dup.invalid?
+        assert @p_dup.errors[:conversation].any?
+      end
+
+    end
+
     context "but whose contact is different" do
 
       setup do

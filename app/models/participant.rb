@@ -6,5 +6,7 @@ class Participant < ActiveRecord::Base
 
   validates :contact, presence: true
   validates :conversation, presence: true
-  validates :contact, same_owner: { as: :conversation }, if: "contact.present?"
+  # TODO are these if statements needed / reasonable?
+  validates :conversation, uniqueness: { :scope => :contact, :message => "already has participant" }, if: "contact.present? and conversation.present?"
+  validates :contact, same_owner: { as: :conversation }, if: "contact.present? and conversation.present?"
 end
