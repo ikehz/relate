@@ -18,6 +18,7 @@ end
 
 Conversation.blueprint do |conversation|
   owner
+  date { Date.today }
   notes { "Some notes" }
 end
 

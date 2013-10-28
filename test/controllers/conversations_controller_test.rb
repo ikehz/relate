@@ -23,7 +23,7 @@ class ConversationsControllerTest < ActionController::TestCase
 
     should "not create conversation" do
       assert_no_difference('Conversation.count') do
-        post :create, conversation: { notes: @c.notes }
+        post :create, conversation: { date: @c.date, notes: @c.notes }
       end
       assert_redirected_to new_user_session_path
     end
@@ -39,7 +39,7 @@ class ConversationsControllerTest < ActionController::TestCase
     end
 
     should "not update conversation" do
-      patch :update, id: @c, conversation: { notes: @c.notes }
+      patch :update, id: @c, conversation: { date: @c.date, notes: @c.notes }
       assert_redirected_to new_user_session_path
     end
 
@@ -73,7 +73,7 @@ class ConversationsControllerTest < ActionController::TestCase
 
     should "create conversation" do
       assert_difference('Conversation.count') do
-        post :create, conversation: { notes: @c.notes }
+        post :create, conversation: { date: @c.date, notes: @c.notes }
       end
       assert_redirected_to conversation_path(assigns(:conversation))
     end
@@ -97,7 +97,7 @@ class ConversationsControllerTest < ActionController::TestCase
       end
 
       should "update conversation" do
-        patch :update, id: @c, conversation: { notes: @c.notes }
+        patch :update, id: @c, conversation: { date: @c.date, notes: @c.notes }
         assert_redirected_to conversation_path(assigns(:conversation))
       end
 
@@ -123,7 +123,7 @@ class ConversationsControllerTest < ActionController::TestCase
       end
 
       should "be forbidden to update conversation" do
-        patch :update, id: @c, conversation: { notes: @c.notes }
+        patch :update, id: @c, conversation: { date: @c.date, notes: @c.notes }
         assert_response 403
       end
 
