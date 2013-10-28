@@ -10,11 +10,11 @@ class ParticipantTest < ActiveSupport::TestCase
 
   # security
 
-  context "a participant that belongs to the current user" do
+  context "a participant whose conversation belongs to the current user" do
 
     setup do
       without_grant do
-        @p = Participant.make!(owner: @u)
+        @p = Participant.make!(conversation: Conversation.make!(owner: @u))
       end
     end
 
@@ -23,7 +23,7 @@ class ParticipantTest < ActiveSupport::TestCase
     end
 
     should "be created" do
-      assert_nothing_raised { Participant.make!(owner: @u) }
+      assert_nothing_raised { Participant.make!(conversation: Conversation.make!(owner: @u)) }
     end
 
     should "be updated" do
@@ -36,7 +36,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
   end
 
-  context "a participant that does not belong to the current user" do
+  context "a participant whose conversation does not belong to the current user" do
 
     setup do
       without_grant do
@@ -64,16 +64,31 @@ class ParticipantTest < ActiveSupport::TestCase
 
   # validations
 
-  context "a participant that belongs to the current user" do
+  context "a participant whose conversation belongs to the current user" do
 
     setup do
       without_grant do
-        @p = Participant.make!(owner: @u)
+        @p = Participant.make!(conversation: Conversation.make!(owner: @u))
       end
     end
 
     should "be valid" do
       assert @p.valid?
+    end
+
+    context "but whose contact is different" do
+
+      setup do
+        without_grant do
+          @p.contact = Contact.make!
+        end
+      end
+
+      should "be invalid" do
+        assert @p.invalid?
+        assert @p.errors[:contact].any?
+      end
+
     end
 
   end
@@ -88,7 +103,6 @@ class ParticipantTest < ActiveSupport::TestCase
 
     should "be invalid" do
       assert @p_empty.invalid?
-      assert @p_empty.errors[:owner].any?
       assert @p_empty.errors[:contact].any?
       assert @p_empty.errors[:conversation].any?
     end

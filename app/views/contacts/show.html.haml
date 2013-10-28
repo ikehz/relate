@@ -1,6 +1,25 @@
 %p
   %strong Name:
   = @contact.name
+%p
+  %strong Conversations:
+  %table
+    %thead
+      %tr
+        %th Date
+        %th Notes
+        %th
+        %th
+        %th
+
+    %tbody
+      - @contact.conversations.each do |conversation|
+        %tr
+          %td= conversation.date
+          %td= conversation.notes
+          %td= link_to 'Show', conversation
+          %td= link_to 'Edit', edit_conversation_path(conversation)
+          %td= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' }
 
 = link_to 'Edit', edit_contact_path(@contact)
 |

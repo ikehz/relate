@@ -18,6 +18,7 @@ end
 
 Conversation.blueprint do |conversation|
   owner
+  date { Date.today }
   notes { "Some notes" }
 end
 
@@ -26,8 +27,9 @@ Contact.blueprint do |contact|
   name { "Contact Person" }
 end
 
+# NOTE: this blueprint will create a record whose contact's owner is the
+# same as the record's conversation's owner.  This does NOT work in reverse.
 Participant.blueprint do |participant|
-  owner
-  contact { Contact.make(owner: object.owner) }
-  conversation { Conversation.make(owner: object.owner) }
+  conversation { Conversation.make }
+  contact { Contact.make(owner: object.conversation.owner) }
 end
