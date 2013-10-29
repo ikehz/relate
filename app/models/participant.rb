@@ -1,6 +1,7 @@
 class Participant < ActiveRecord::Base
   belongs_to :contact
-  belongs_to :conversation
+  # XXX this inverse_of is a workaround until @wangjohn's PR 9522 is merged into stable
+  belongs_to :conversation, inverse_of: :participants
 
   grant(:find, :create, :update, :destroy) { |user, model, action| model.conversation.owned_by? user }
 
