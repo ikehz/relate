@@ -27,7 +27,7 @@ Contact.blueprint do |contact|
   name { "Contact Person" }
 end
 
-# NOTE: this blueprint will create a record whose contact's owner is the
+# NOTE this blueprint will create a record whose contact's owner is the
 # same as the record's conversation's owner.  This does NOT work in reverse.
 Participant.blueprint do |participant|
   conversation { Conversation.make }
