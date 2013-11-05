@@ -11,8 +11,14 @@
   %body
 
     .container
-      .header
-        %h3{class: "muted"}
-          = Leucurus
+      %nav
+        %h3{class: "muted"} Leucurus
+
+      %hr/
 
       = yield
+
+      %hr/
+
+      %footer
+        %p{class: "muted"} © Leucurus Labs 2013
