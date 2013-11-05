@@ -27,11 +27,6 @@ class ConversationsController < ApplicationController
 
   # POST /conversations
   # POST /conversations.json
-  #
-  # TODO: the conversation_id is not getting passed to the participants,
-  # because when they are created, the conversation hasn’t yet been committed
-  # and has no id, (this doesn’t show up when adding or removing participants,
-  # because the conversation already has an id)
   def create
     @conversation = Conversation.new(conversation_params)
     @conversation.owner = current_user

@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 # Application #
 ###############
 
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -75,6 +77,9 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+# For Heroku
+gem 'rails_12factor'
 
 #################
 # Documentation #
