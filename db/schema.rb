@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029191148) do
+ActiveRecord::Schema.define(version: 20131106160946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20131029191148) do
   add_index "participants", ["conversation_id", "contact_id"], name: "index_participants_on_conversation_id_and_contact_id", unique: true, using: :btree
   add_index "participants", ["conversation_id"], name: "index_participants_on_conversation_id", using: :btree
 
+  create_table "sign_ups", force: true do |t|
+    t.string   "email",      null: false
+    t.boolean  "build",      null: false
+    t.boolean  "mobilize",   null: false
+    t.boolean  "share",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sign_ups", ["email"], name: "index_sign_ups_on_email", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -74,5 +85,6 @@ ActiveRecord::Schema.define(version: 20131029191148) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

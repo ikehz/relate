@@ -8,8 +8,15 @@ require 'machinist/active_record'
 #     body  { "Lorem ipsum..." }
 #   end
 
+SignUp.blueprint do |sign_up|
+  email  { "sign_up#{sn}@s.com" }
+  build  { true }
+  mobilize  { false }
+  share  { true }
+end
+
 User.blueprint do |user|
-  email  { "user#{sn}@example.com" }
+  email  { "user#{sn}@u.com" }
   username { "user#{sn}" }
   name { "User Person" }
   password  { "password#{sn}" }
