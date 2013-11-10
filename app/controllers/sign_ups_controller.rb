@@ -28,7 +28,8 @@ class SignUpsController < ApplicationController
 
     respond_to do |format|
       if @sign_up.save
-        format.html { redirect_to root_path, notice: 'Sign Up was successfully created.' }
+        flash[:success] = "Thanks!  We'll keep in touch."
+        format.html { redirect_to root_path }
       else
         format.html { render action: 'new' }
       end
@@ -40,7 +41,8 @@ class SignUpsController < ApplicationController
   # def update
   #   respond_to do |format|
   #     if @sign_up.update(sign_up_params)
-  #       format.html { redirect_to @sign_up, notice: 'Sign Up was successfully updated.' }
+  #       flash[:success] = 'Sign Up was successfully updated.'
+  #       format.html { redirect_to @sign_up }
   #       format.json { head :no_content }
   #     else
   #       format.html { render action: 'edit' }

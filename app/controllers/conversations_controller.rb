@@ -33,7 +33,8 @@ class ConversationsController < ApplicationController
 
     respond_to do |format|
       if @conversation.save
-        format.html { redirect_to @conversation, notice: 'Conversation was successfully created.' }
+        flash[:success] = 'Conversation was successfully created.'
+        format.html { redirect_to @conversation }
         format.json { render action: 'show', status: :created, location: @conversation }
       else
         format.html { render action: 'new' }
@@ -47,7 +48,8 @@ class ConversationsController < ApplicationController
   def update
     respond_to do |format|
       if @conversation.update(conversation_params)
-        format.html { redirect_to @conversation, notice: 'Conversation was successfully updated.' }
+        flash[:success] = 'Conversation was successfully updated.'
+        format.html { redirect_to @conversation }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
