@@ -1,0 +1,7 @@
+%nav
+  %ul.nav.nav-pills.pull-right
+    %li{class: (params[:controller] == 'sign_ups' ? 'active' : nil)}= link_to "Learn more", new_sign_up_path
+    %li= link_to "Home", root_path
+  %h3.text-muted Leucurus
+
+%br/

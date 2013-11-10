@@ -11,10 +11,7 @@
   %body
 
     .container
-      %nav
-        %h3{class: "text-muted"} Leucurus
-
-      %hr/
+      = render partial: "layouts/nav"
 
       = render partial: "layouts/flash_messages", flash: flash
 
