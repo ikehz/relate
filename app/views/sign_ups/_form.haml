@@ -1,8 +1,69 @@
 = simple_form_for(@sign_up) do |f|
+
+  .col-md-offset-3.col-md-9
+    %p
+      In our experience, community organizers need to build relationships
+      around shared values.  We think that if Leucurus can help you build
+      strong relationships by keeping track of how a relationship has
+      progressed and what the next steps are, that would make you a better
+      organizer.  Do you agree?
+    .form-group{class: (@sign_up.errors[:build].empty? ? nil : 'has-error')}
+      .radio
+        %label
+          = f.radio_button(:build, true)
+          Yes
+      .radio
+        %label
+          = f.radio_button(:build, false)
+          No
+      - unless @sign_up.errors[:build].empty?
+        %span.help-block= @sign_up.errors[:build].join(", ")
+
+  .col-md-offset-3.col-md-9
+    %p
+      We also think that community organizers need to mobilize relationships
+      into action. Hopefully, Leucurus could help you keep track of what needs
+      to get done, who is doing what, and what skills, assets, and interests
+      your team has.  Do you think that would that be helpful?
+    .form-group{class: (@sign_up.errors[:mobilize].empty? ? nil : 'has-error')}
+      .radio
+        %label
+          = f.radio_button(:mobilize, true)
+          Yes
+      .radio
+        %label
+          = f.radio_button(:mobilize, false)
+          No
+      - unless @sign_up.errors[:mobilize].empty?
+        %span.help-block= @sign_up.errors[:mobilize].join(", ")
+
+  .col-md-offset-3.col-md-9
+    %p
+      Last, we've found that we need to share rich information about
+      relationships with others. We're going to make sure Leucurus helps you
+      share and pass off strong relationships with ease by providing robust
+      privacy and sharing controls along with rich data.  Is that important to
+      you?
+    .form-group{class: (@sign_up.errors[:share].empty? ? nil : 'has-error')}
+      .radio
+        %label
+          = f.radio_button(:share, true)
+          Yes
+      .radio
+        %label
+          = f.radio_button(:share, false)
+          No
+      - unless @sign_up.errors[:share].empty?
+        %span.help-block= @sign_up.errors[:share].join(", ")
+
+  %p.col-md-offset-3.col-md-9
+    Before giving us your email, please check out the questions above to help
+    us make solutions that best fit your needs as an organizer.  Thanks!
   = f.input :email
-  = f.input :build
-  = f.input :mobilize
-  = f.input :share
+
+  %p.col-md-offset-3.col-md-9
+    %span.help-block We'll never share your information with anyone.
+
   .form-group
     .col-md-offset-3.col-md-9
       = f.button :submit, 'Keep me posted!'
