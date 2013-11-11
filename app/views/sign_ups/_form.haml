@@ -10,12 +10,16 @@
     .form-group{class: (@sign_up.errors[:build].empty? ? nil : 'has-error')}
       .radio
         %label
-          = f.radio_button(:build, true)
-          Yes
+          = f.radio_button(:build, -1)
+          No, not really.
       .radio
         %label
-          = f.radio_button(:build, false)
-          No
+          = f.radio_button(:build, 0)
+          Eh...
+      .radio
+        %label
+          = f.radio_button(:build, 1)
+          Yes!
       - unless @sign_up.errors[:build].empty?
         %span.help-block= @sign_up.errors[:build].join(", ")
 
@@ -28,12 +32,16 @@
     .form-group{class: (@sign_up.errors[:mobilize].empty? ? nil : 'has-error')}
       .radio
         %label
-          = f.radio_button(:mobilize, true)
-          Yes
+          = f.radio_button(:mobilize, -1)
+          No, not really.
       .radio
         %label
-          = f.radio_button(:mobilize, false)
-          No
+          = f.radio_button(:mobilize, 0)
+          Eh...
+      .radio
+        %label
+          = f.radio_button(:mobilize, 1)
+          Yes!
       - unless @sign_up.errors[:mobilize].empty?
         %span.help-block= @sign_up.errors[:mobilize].join(", ")
 
@@ -47,12 +55,16 @@
     .form-group{class: (@sign_up.errors[:share].empty? ? nil : 'has-error')}
       .radio
         %label
-          = f.radio_button(:share, true)
-          Yes
+          = f.radio_button(:share, -1)
+          No, not really.
       .radio
         %label
-          = f.radio_button(:share, false)
-          No
+          = f.radio_button(:share, 0)
+          Eh...
+      .radio
+        %label
+          = f.radio_button(:share, 1)
+          Yes!
       - unless @sign_up.errors[:share].empty?
         %span.help-block= @sign_up.errors[:share].join(", ")
 
