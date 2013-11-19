@@ -13,7 +13,9 @@ Leucurus::Application.routes.draw do
 
   resources :sign_ups, only: [:new, :create]
 
-  resources :conversations
+  resources :conversations do
+    resources :participants, shallow: true
+  end
   resources :contacts
 
   # Example of regular route:
