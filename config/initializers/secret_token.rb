@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Leucurus::Application.config.secret_key_base = '4584effac2245aafb9a34550ba246e3cf1d35b804bc93f6ae10ea6d820def6c997d7ec1b1d16cb32b93db1303964a5e5eac31b451d30591b154a202e595a1dbd'
+Relate::Application.config.secret_key_base = '4584effac2245aafb9a34550ba246e3cf1d35b804bc93f6ae10ea6d820def6c997d7ec1b1d16cb32b93db1303964a5e5eac31b451d30591b154a202e595a1dbd'

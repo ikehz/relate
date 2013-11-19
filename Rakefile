@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Leucurus::Application.load_tasks
+Relate::Application.load_tasks

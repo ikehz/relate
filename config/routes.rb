@@ -1,4 +1,4 @@
-Leucurus::Application.routes.draw do
+Relate::Application.routes.draw do
 
   # TODO does this need to be here?
   get "home/index"

@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: leucurus_dev
+  database: relate_dev
   pool: 5
 
 # Warning: The database defined as "test" will be erased and
@@ -12,5 +12,5 @@ test:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: leucurus_test
+  database: relate_test
   pool: 5
