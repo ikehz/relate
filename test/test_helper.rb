@@ -22,3 +22,19 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
+module GrantTestHelpers
+  include Grant::Status
+
+  def self.included(base)
+    base.class_eval do
+      setup do
+        disable_grant
+      end
+
+      teardown do
+        enable_grant
+      end
+    end
+  end
+end

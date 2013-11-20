@@ -1,37 +1,16 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-
-  setup do
-    without_grant do
-      Grant::User.current_user = @u = User.make!
-    end
-  end
-
-  # validations
+  include GrantTestHelpers
 
   context "a user" do
 
     setup do
-      without_grant do
-        @u = User.make!
-      end
+      @u = User.make!
     end
 
-    context "that is valid" do
-      should "be valid" do
-        assert @u.valid?
-      end
-    end
-
-    context "that is empty" do
-      should "be invalid" do
-        u = User.new
-        assert u.invalid?
-        assert u.errors[:username].any?
-        assert u.errors[:password].any?
-        assert u.errors[:email].any?
-      end
+    should "be valid" do
+      assert @u.valid?
     end
 
     context "with a valid username" do
@@ -59,6 +38,21 @@ class UserTest < ActiveSupport::TestCase
         assert v.invalid?, "#{v.username} should be a duplicate, and therefore invalid, username"
         assert v.errors[:username].any?, "#{v.username} should be a duplicate, invalid username"
       end
+    end
+
+  end
+
+  context "an empty user" do
+
+    setup do
+      @u = User.new
+    end
+
+    should "be invalid" do
+      assert @u.invalid?
+      assert @u.errors[:username].any?
+      assert @u.errors[:password].any?
+      assert @u.errors[:email].any?
     end
 
   end
