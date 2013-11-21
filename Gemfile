@@ -37,9 +37,13 @@ gem 'cocoon'
 # Development #
 ###############
 
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+  gem 'fuubar'
+end
+
 group :test do
   gem 'machinist'
-  gem 'shoulda'
 end
 
 # Use Capistrano for deployment
@@ -80,7 +84,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # For Heroku
-gem 'rails_12factor'
+group :production do
+  gem 'rails_12factor'
+end
 
 #################
 # Documentation #
