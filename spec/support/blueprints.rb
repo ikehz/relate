@@ -19,12 +19,10 @@ Contact.blueprint do |contact|
   name { "Contact Person #{sn}" }
 end
 
-# NOTE this blueprint will create a record whose contact's owner is the
-# same as the record's conversation's owner.  This does NOT work in reverse.
 Participant.blueprint do |participant|
-  u = User.make
-  conversation { Conversation.make(owner: u) }
-  contact { Contact.make(owner: u) }
+  owner
+  conversation { Conversation.make(owner: owner) }
+  contact { Contact.make(owner: owner) }
 end
 
 SignUp.blueprint do |sign_up|

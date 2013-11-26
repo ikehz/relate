@@ -14,6 +14,10 @@ describe Participant do
     expect(Participant.make(contact: Contact.make)).not_to be_valid
   end
 
+  it "is invalid without an owner" do
+    expect(Participant.make(owner: nil)).not_to be_valid
+  end
+
   it "is invalid without a contact" do
     expect(Participant.make(contact: nil)).not_to be_valid
   end
