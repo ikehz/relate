@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.owned_by(current_user)
+    @conversations = current_user.conversations
   end
 
   # GET /conversations/1
@@ -18,7 +18,7 @@ class ConversationsController < ApplicationController
 
   # GET /conversations/new
   def new
-    @conversation = Conversation.new
+    @conversation = current_user.conversations.new
   end
 
   # GET /conversations/1/edit
@@ -28,9 +28,7 @@ class ConversationsController < ApplicationController
   # POST /conversations
   # POST /conversations.json
   def create
-    @conversation = Conversation.new(conversation_params)
-    @conversation.owner = current_user
-
+    @conversation = current_user.conversations.new(conversation_params)
     respond_to do |format|
       if @conversation.save
         flash[:success] = 'Conversation was successfully created.'
@@ -71,7 +69,7 @@ class ConversationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_conversation
-      @conversation = Conversation.find(params[:id])
+      @conversation = current_user.conversations.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
