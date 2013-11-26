@@ -26,15 +26,15 @@ describe SignUp do
     end
   end
 
-  it "is invalid without an build" do
+  it "is invalid without a build" do
     expect(SignUp.make(build: nil)).not_to be_valid
   end
 
-  it "is invalid without an mobilize" do
+  it "is invalid without a mobilize" do
     expect(SignUp.make(mobilize: nil)).not_to be_valid
   end
 
-  it "is invalid without an share" do
+  it "is invalid without a share" do
     expect(SignUp.make(share: nil)).not_to be_valid
   end
 end
