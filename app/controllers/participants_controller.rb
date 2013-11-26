@@ -9,7 +9,7 @@ class ParticipantsController < ApplicationController
   # GET conversation/1/participants
   # GET conversation/1/participants.json
   def index
-    @participants = Participant.where(conversation: @conversation)
+    @participants = current_user.participants.where(conversation: @conversation)
   end
 
   # GET /participants/1
@@ -19,7 +19,7 @@ class ParticipantsController < ApplicationController
 
   # GET conversation/1/participants/new
   def new
-    @participant = Participant.new(conversation: @conversation)
+    @participant = current_user.participants.new(conversation: @conversation)
   end
 
   # GET /participants/1/edit
@@ -29,10 +29,7 @@ class ParticipantsController < ApplicationController
   # POST conversation/1/participants
   # POST conversation/1/participants.json
   def create
-    @participant = Participant.new(participant_params)
-    @participant.conversation = @conversation
-    @participant.owner = current_user
-
+    @participant = current_user.participants.new(participant_params.merge conversation: @conversation)
     respond_to do |format|
       if @participant.save
         flash[:success] = 'Participant was successfully created.'
@@ -74,16 +71,16 @@ class ParticipantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_participant
-      @participant = Participant.find(params[:id])
+      @participant = current_user.participants.find(params[:id])
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_conversation
-      @conversation = Conversation.find(params[:conversation_id])
+      @conversation = current_user.conversations.find(params[:conversation_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participant_params
-      params.require(:participant).permit(:date, :notes)
+      params.require(:participant).permit(:contact)
     end
 end
