@@ -1,7 +1,6 @@
 class SameOwnerValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    unless record.send(options[:as]).owner == value.owner
-      record.errors.add(attribute, "does not have same owner as " + options[:as].to_s)
-    end
+    return if value.nil?
+    record.errors.add(attribute, "does not have same owner as record") unless record.owner == value.owner
   end
 end
