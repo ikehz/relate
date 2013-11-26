@@ -3,8 +3,8 @@ shared_examples "an owned resource controller" do
   let (:resource_class) { eval(resource.to_s.capitalize) }
 
   let (:user) { User.make! }
-  let (:record) { without_grant { resource_class.make!(owner: user) } }
-  let (:other_record) { without_grant { resource_class.make! } }
+  let (:record) { resource_class.make!(owner: user) }
+  let (:other_record) { resource_class.make! }
 
   let (:resources_path) { eval(resource.to_s.pluralize + '_path') }
 

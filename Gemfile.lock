@@ -54,8 +54,6 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.2.0)
       ruby-progressbar (~> 1.0)
-    grant (2.1.0)
-      activerecord (> 3.0.0)
     haml (4.0.4)
       tilt
     hashie (2.0.5)
@@ -171,7 +169,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   fuubar
-  grant
   haml
   jbuilder (~> 1.2)
   jquery-rails

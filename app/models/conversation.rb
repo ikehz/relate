@@ -4,7 +4,5 @@ class Conversation < ActiveRecord::Base
   has_many :participants, dependent: :destroy
   has_many :contacts, through: :participants
 
-  grant(:find, :create, :update, :destroy) { |user, model, action| model.owned_by? user }
-
   validates :date, presence: true
 end

@@ -42,7 +42,4 @@ RSpec.configure do |config|
 
   # For Devise
   config.include Devise::TestHelpers, type: :controller
-
-  # For Grant
-  config.include Grant::Status
 end

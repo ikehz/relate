@@ -10,10 +10,8 @@ describe SignUp do
   end
 
   it "is invalid with a duplicate email" do
-    without_grant do
-      s = SignUp.make!
-      expect(SignUp.make(email: s.email)).not_to be_valid
-    end
+    s = SignUp.make!
+    expect(SignUp.make(email: s.email)).not_to be_valid
   end
 
   it "is invalid with an invalid email" do

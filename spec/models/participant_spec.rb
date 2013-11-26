@@ -6,10 +6,8 @@ describe Participant do
   end
 
   it "is invalid if it is a duplicate" do
-    without_grant do
-      p = Participant.make!
-      expect(Participant.make(contact: p.contact, conversation: p.conversation)).not_to be_valid
-    end
+    p = Participant.make!
+    expect(Participant.make(contact: p.contact, conversation: p.conversation)).not_to be_valid
   end
     
   it "is invalid if its contact and conversation have different owners" do
