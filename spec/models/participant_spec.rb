@@ -18,11 +18,6 @@ describe Participant do
     expect(Participant.make(conversation: Conversation.make)).not_to be_valid
   end
 
-  # XXX this should probably be tested in the Owned concern
-  it "is invalid without an owner" do
-    expect(Participant.make(owner: nil)).not_to be_valid
-  end
-
   it "is invalid without a contact" do
     expect(Participant.make(contact: nil)).not_to be_valid
   end
