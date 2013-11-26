@@ -21,8 +21,8 @@ end
 
 Participant.blueprint do |participant|
   owner
-  conversation { Conversation.make(owner: owner) }
-  contact { Contact.make(owner: owner) }
+  conversation { Conversation.make(owner: object.owner) }
+  contact { Contact.make(owner: object.owner) }
 end
 
 SignUp.blueprint do |sign_up|
