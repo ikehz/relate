@@ -8,4 +8,8 @@ class Participant < ActiveRecord::Base
   validates :conversation, presence: true, same_owner: true
 
   validates :contact, uniqueness: { :scope => :conversation }, allow_blank: true
+
+  def contact_name
+    contact.name
+  end
 end

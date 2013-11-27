@@ -25,4 +25,11 @@ describe Participant do
   it "is invalid without a conversation" do
     expect(Participant.make(conversation: nil)).not_to be_valid
   end
+
+  describe "#contact_name" do
+    it "returns the contact's name" do
+      c = Contact.make
+      expect(Participant.make(contact: c).contact_name).to eq(c.name)
+    end
+  end
 end
