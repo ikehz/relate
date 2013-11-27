@@ -168,7 +168,7 @@ shared_examples "DELETE #destroy" do
 
   it "redirects to index" do
     delete :destroy, id: resource
-    expect(response).to redirect_to(eval(resource_name.to_s.pluralize + '_path'))
+    expect(response).to redirect_to(send(resource_name.to_s.pluralize + '_path'))
   end
 end
 
