@@ -1,3 +1,6 @@
+# requires:
+#   let (:resource_name)
+#   let (:resources)
 shared_examples "GET #index" do
   it "assigns the correct resource" do
     get :index
@@ -16,6 +19,8 @@ shared_examples "GET #index" do
   end
 end
 
+# requires:
+#   let (:resource_name)
 shared_examples "GET #new" do
   it "assigns a new resource" do
     get :new
@@ -34,15 +39,19 @@ shared_examples "GET #new" do
   end
 end
 
+# requires:
+#   let (:resource_name)
+#   let (:update_resource)
+#   let (:invalid_resource)
 shared_examples "POST #create" do
   context "with valid attributes" do
     it "saves the new resource" do
-      post :create, resource_name => resource.attributes
+      post :create, resource_name => update_resource.attributes
       expect(assigns(resource_name)).not_to be_new_record
     end
 
     it "redirects to resource with flash message" do
-      post :create, resource_name => resource.attributes
+      post :create, resource_name => update_resource.attributes
       expect(response).to redirect_to(assigns(resource_name))
       expect(flash[:success]).not_to be_nil
     end
@@ -67,6 +76,9 @@ shared_examples "POST #create" do
   end
 end
 
+# requires:
+#   let (:resource_name)
+#   let (:resource)
 shared_examples "GET #show" do
   it "assigns the correct resource" do
     get :show, id: resource
@@ -85,6 +97,9 @@ shared_examples "GET #show" do
   end
 end
 
+# requires:
+#   let (:resource_name)
+#   let (:resource)
 shared_examples "GET #edit" do
   it "assigns the correct resource" do
     get :edit, id: resource
@@ -103,6 +118,12 @@ shared_examples "GET #edit" do
   end
 end
 
+# requires:
+#   let (:resource_name)
+#   let (:resource)
+#   let (:invalid_resource)
+#   let (:update_resource)
+#   let (:update_attribute)
 shared_examples "PATCH #update" do
   context "with valid attributes" do
     it "updates the resource" do
@@ -136,6 +157,9 @@ shared_examples "PATCH #update" do
   end
 end
 
+# requires:
+#   let (:resource_name)
+#   let (:resource)
 shared_examples "DELETE #destroy" do
   it "destroys the Resource" do
     delete :destroy, id: resource
@@ -148,6 +172,12 @@ shared_examples "DELETE #destroy" do
   end
 end
 
+# requires:
+#   let (:resource_name)
+#   let (:resource)
+#   let (:invalid_resource)
+#   let (:update_resource)
+#   let (:update_attribute)
 shared_examples "a RESTful resource" do
   describe "GET #index" do
     it_behaves_like "GET #index" do

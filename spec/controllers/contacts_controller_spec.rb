@@ -16,5 +16,4 @@ describe ContactsController do
       let (:update_attribute) { :name }
     end
   end
-
 end

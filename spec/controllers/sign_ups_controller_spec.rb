@@ -2,20 +2,8 @@ require 'spec_helper'
 
 describe SignUpsController do
   describe "GET #new" do
-    it "assigns a new SignUp to @sign_up" do
-      get :new
-      expect(assigns(:sign_up)).to be_new_record
-    end
-
-    it "responds successfully with 200" do
-      get :new
-      expect(response).to be_success
-      expect(response.status).to eq(200)
-    end
-
-    it "renders the :new template" do
-      get :new
-      expect(response).to render_template :new
+    it_behaves_like "GET #new" do
+      let (:resource_name) { :sign_up }
     end
   end
 
@@ -28,6 +16,7 @@ describe SignUpsController do
 
       it "redirects to root with flash message" do
         post :create, sign_up: SignUp.make.attributes
+        # redirect to root_path
         expect(response).to redirect_to(root_path)
         expect(flash[:success]).not_to be_nil
       end
