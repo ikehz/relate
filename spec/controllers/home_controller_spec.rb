@@ -2,15 +2,17 @@ require 'spec_helper'
 
 describe HomeController do
   describe "GET #index" do
-    it "responds successfully with an HTTP 200 status code" do
+    # no resource to assign
+
+    it "responds successfully with 200" do
       get :index
       expect(response).to be_success
       expect(response.status).to eq(200)
     end
 
-    it "renders the index template" do
+    it "renders the correct template" do
       get :index
-      expect(response).to render_template('index')
+      expect(response).to render_template :index
     end
   end
 end
