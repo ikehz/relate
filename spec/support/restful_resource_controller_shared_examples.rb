@@ -128,7 +128,7 @@ shared_examples "PATCH #update" do
   context "with valid attributes" do
     it "updates the resource" do
       patch :update, id: resource, resource_name => update_resource.attributes
-      expect(resource.reload.send(update_attribute)).to eq(update_resource.send(update_attribute))
+      expect(resource.reload.public_send(update_attribute)).to eq(update_resource.public_send(update_attribute))
     end
 
     it "redirects to resource with flash message" do
@@ -141,7 +141,7 @@ shared_examples "PATCH #update" do
   context "with invalid attributes" do
     it "does not update the resource" do
       patch :update, id: resource, resource_name => invalid_resource.attributes
-      expect(resource.reload.send(update_attribute)).to eq(resource.send(update_attribute))
+      expect(resource.reload.public_send(update_attribute)).to eq(resource.public_send(update_attribute))
     end
 
     it "responds successfully with 200" do
@@ -168,7 +168,7 @@ shared_examples "DELETE #destroy" do
 
   it "redirects to index" do
     delete :destroy, id: resource
-    expect(response).to redirect_to(send(resource_name.to_s.pluralize + '_path'))
+    expect(response).to redirect_to(public_send(resource_name.to_s.pluralize + '_path'))
   end
 end
 

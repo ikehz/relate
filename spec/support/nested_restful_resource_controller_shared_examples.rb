@@ -29,7 +29,7 @@ shared_examples "nested GET #new" do
   it "assigns a new resource with the correct nest resource" do
     get :new, (nest_resource_name.to_s + '_id').to_sym => nest_resource
     expect(assigns(resource_name)).to be_new_record
-    expect(assigns(resource_name).send(nest_resource_name)).to eq(nest_resource)
+    expect(assigns(resource_name).public_send(nest_resource_name)).to eq(nest_resource)
   end
 
   it "responds successfully with 200" do
@@ -55,7 +55,7 @@ shared_examples "nested POST #create" do
     it "saves the new resource with correct nest resource" do
       post :create, (nest_resource_name.to_s + '_id').to_sym => nest_resource, resource_name => update_resource.attributes
       expect(assigns(resource_name)).not_to be_new_record
-      expect(assigns(resource_name).send(nest_resource_name)).to eq(nest_resource)
+      expect(assigns(resource_name).public_send(nest_resource_name)).to eq(nest_resource)
     end
 
     it "redirects to resource with flash message" do
@@ -97,7 +97,7 @@ shared_examples "nested DELETE #destroy" do
 
   it "redirects to index" do
     delete :destroy, id: resource
-    expect(response).to redirect_to(send(nest_resource_name.to_s + '_' + resource_name.to_s.pluralize + '_path', nest_resource))
+    expect(response).to redirect_to(public_send(nest_resource_name.to_s + '_' + resource_name.to_s.pluralize + '_path', nest_resource))
   end
 end
 
