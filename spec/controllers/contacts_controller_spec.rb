@@ -19,5 +19,9 @@ describe ContactsController do
       let (:invalid_resource) { @invalid_contact }
       let (:update_attribute) { :name }
     end
+
+    it_behaves_like "a RESTful unowned resource controller" do
+      let (:unowned_resource) { @unowned_contact }
+    end
   end
 end

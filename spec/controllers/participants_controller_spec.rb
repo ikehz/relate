@@ -22,5 +22,9 @@ describe ParticipantsController do
       let (:invalid_resource) { @invalid_participant }
       let (:update_attribute) { :contact }
     end
+
+    it_behaves_like "a RESTful unowned resource controller" do
+      let (:unowned_resource) { @unowned_participant }
+    end
   end
 end

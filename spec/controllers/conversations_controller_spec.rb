@@ -19,5 +19,9 @@ describe ConversationsController do
       let (:invalid_resource) { @invalid_conversation }
       let (:update_attribute) { :notes }
     end
+
+    it_behaves_like "a RESTful unowned resource controller" do
+      let (:unowned_resource) { @unowned_conversation }
+    end
   end
 end
