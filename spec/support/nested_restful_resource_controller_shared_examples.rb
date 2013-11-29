@@ -109,7 +109,7 @@ end
 #   let (:new_resource)
 #   let (:invalid_resource)
 #   let (:update_attribute)
-shared_examples "a nested RESTful resource" do
+shared_examples "a nested RESTful resource controller" do
   describe "GET #index" do
     it_behaves_like "nested GET #index" do
       let (:resources) { [resource] }

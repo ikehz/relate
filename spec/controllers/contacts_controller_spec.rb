@@ -12,7 +12,7 @@ describe ContactsController do
       @unowned_contact = Contact.make!
     end
 
-    it_behaves_like "a RESTful resource" do
+    it_behaves_like "a RESTful resource controller" do
       let (:resource_name) { :contact }
       let (:resource) { @contact }
       let (:new_resource) { @new_contact }
