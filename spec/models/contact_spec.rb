@@ -5,7 +5,9 @@ describe Contact do
     expect(Contact.make).to be_valid
   end
 
-  it "is invalid without an name" do
+  it "is invalid without a name" do
     expect(Contact.make(name: nil)).not_to be_valid
   end
+
+  it_behaves_like "an owned model"
 end

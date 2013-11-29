@@ -32,4 +32,6 @@ describe Participant do
       expect(Participant.make(contact: c).contact_name).to eq(c.name)
     end
   end
+
+  it_behaves_like "an owned model"
 end
