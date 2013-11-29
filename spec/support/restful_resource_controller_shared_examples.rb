@@ -41,17 +41,17 @@ end
 
 # requires:
 #   let (:resource_name)
-#   let (:update_resource)
+#   let (:new_resource)
 #   let (:invalid_resource)
 shared_examples "POST #create" do
   context "with valid attributes" do
     it "saves the new resource" do
-      post :create, resource_name => update_resource.attributes
+      post :create, resource_name => new_resource.attributes
       expect(assigns(resource_name)).not_to be_new_record
     end
 
     it "redirects to resource with flash message" do
-      post :create, resource_name => update_resource.attributes
+      post :create, resource_name => new_resource.attributes
       expect(response).to redirect_to(assigns(resource_name))
       expect(flash[:success]).not_to be_nil
     end
@@ -121,18 +121,18 @@ end
 # requires:
 #   let (:resource_name)
 #   let (:resource)
+#   let (:new_resource)
 #   let (:invalid_resource)
-#   let (:update_resource)
 #   let (:update_attribute)
 shared_examples "PATCH #update" do
   context "with valid attributes" do
     it "updates the resource" do
-      patch :update, id: resource, resource_name => update_resource.attributes
-      expect(resource.reload.public_send(update_attribute)).to eq(update_resource.public_send(update_attribute))
+      patch :update, id: resource, resource_name => new_resource.attributes
+      expect(resource.reload.public_send(update_attribute)).to eq(new_resource.public_send(update_attribute))
     end
 
     it "redirects to resource with flash message" do
-      patch :update, id: resource, resource_name => update_resource.attributes
+      patch :update, id: resource, resource_name => new_resource.attributes
       expect(response).to redirect_to(assigns(resource_name))
       expect(flash[:success]).not_to be_nil
     end
@@ -175,8 +175,8 @@ end
 # requires:
 #   let (:resource_name)
 #   let (:resource)
+#   let (:new_resource)
 #   let (:invalid_resource)
-#   let (:update_resource)
 #   let (:update_attribute)
 shared_examples "a RESTful resource" do
   describe "GET #index" do

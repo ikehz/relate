@@ -2,20 +2,24 @@ require 'spec_helper'
 
 describe ParticipantsController do
   let (:user) { User.make! }
-  let (:conversation) { Conversation.make!(owner: user) }
 
   context "when a user is signed-in" do
     before do
       sign_in user
+      @conversation = Conversation.make!(owner: user)
+      @participant = Participant.make!(owner: user, conversation: @conversation)
+      @new_participant = Participant.make(owner: user, contact: Contact.make!(owner: user))
+      @invalid_participant = Participant.new
+      @unowned_participant = Participant.make!
     end
 
     it_behaves_like "a nested RESTful resource" do
       let (:nest_resource_name) { :conversation }
-      let (:nest_resource) { conversation }
+      let (:nest_resource) { @conversation }
       let (:resource_name) { :participant }
-      let (:resource) { Participant.make!(owner: user, conversation: conversation) }
-      let (:invalid_resource) { Participant.new }
-      let (:update_resource) { Participant.make(owner: user, contact: Contact.make!(owner: user)) }
+      let (:resource) { @participant }
+      let (:new_resource) { @new_participant }
+      let (:invalid_resource) { @invalid_participant }
       let (:update_attribute) { :contact }
     end
   end

@@ -6,13 +6,17 @@ describe ConversationsController do
   context "when a user is signed-in" do
     before do
       sign_in user
+      @conversation = Conversation.make!(owner: user)
+      @new_conversation = Conversation.make(owner: user)
+      @invalid_conversation = Conversation.new
+      @unowned_conversation = Conversation.make!
     end
 
     it_behaves_like "a RESTful resource" do
       let (:resource_name) { :conversation }
-      let (:resource) { Conversation.make!(owner: user) }
-      let (:invalid_resource) { Conversation.new }
-      let (:update_resource) { Conversation.make(owner: user) }
+      let (:resource) { @conversation }
+      let (:new_resource) { @new_conversation }
+      let (:invalid_resource) { @invalid_conversation }
       let (:update_attribute) { :notes }
     end
   end

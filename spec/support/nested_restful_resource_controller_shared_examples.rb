@@ -48,18 +48,18 @@ end
 #   let (:nest_resource_name)
 #   let (:nest_resource)
 #   let (:resource_name)
-#   let (:update_resource)
+#   let (:new_resource)
 #   let (:invalid_resource)
 shared_examples "nested POST #create" do
   context "with valid attributes" do
     it "saves the new resource with correct nest resource" do
-      post :create, (nest_resource_name.to_s + '_id').to_sym => nest_resource, resource_name => update_resource.attributes
+      post :create, (nest_resource_name.to_s + '_id').to_sym => nest_resource, resource_name => new_resource.attributes
       expect(assigns(resource_name)).not_to be_new_record
       expect(assigns(resource_name).public_send(nest_resource_name)).to eq(nest_resource)
     end
 
     it "redirects to resource with flash message" do
-      post :create, (nest_resource_name.to_s + '_id').to_sym => nest_resource, resource_name => update_resource.attributes
+      post :create, (nest_resource_name.to_s + '_id').to_sym => nest_resource, resource_name => new_resource.attributes
       expect(response).to redirect_to(assigns(resource_name))
       expect(flash[:success]).not_to be_nil
     end
@@ -106,8 +106,8 @@ end
 #   let (:nest_resource)
 #   let (:resource_name)
 #   let (:resource)
+#   let (:new_resource)
 #   let (:invalid_resource)
-#   let (:update_resource)
 #   let (:update_attribute)
 shared_examples "a nested RESTful resource" do
   describe "GET #index" do
