@@ -37,9 +37,7 @@ gem 'cocoon'
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'fuubar'
-end
-
-group :test do
+  gem 'capybara'
   gem 'machinist'
 end
 
