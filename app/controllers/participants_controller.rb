@@ -9,7 +9,7 @@ class ParticipantsController < ApplicationController
   # GET conversation/1/participants
   # GET conversation/1/participants.json
   def index
-    @participants = current_user.participants.where(conversation: @conversation)
+    render 'conversations/show'
   end
 
   # GET /participants/1
