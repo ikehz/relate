@@ -15,7 +15,7 @@
     %tbody
       - @conversation.participants.each do |participant|
         %tr
-          %td= participant.contact_name
+          %td= participant.name
           %td= link_to 'Show', participant
           %td= link_to 'Edit', edit_participant_path(participant)
           %td= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' }

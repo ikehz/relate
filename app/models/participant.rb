@@ -9,7 +9,7 @@ class Participant < ActiveRecord::Base
 
   validates :contact, uniqueness: { :scope => :conversation }, allow_blank: true
 
-  def contact_name
+  def name
     contact.name
   end
 end
