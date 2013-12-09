@@ -3,8 +3,8 @@
     %li= link_to "Home", root_path
 
     - if user_signed_in?
-      %li{class: (params[:controller] == 'contacts' ? 'active' : nil)}= link_to "Contacts", contacts_path
-      %li{class: (params[:controller] == 'conversations' ? 'active' : nil)}= link_to "Conversations", conversations_path
+      %li{class: (['contacts'].include?(params[:controller]) ? 'active' : nil)}= link_to "Contacts", contacts_path
+      %li{class: (['conversations', 'participants'].include?(params[:controller]) ? 'active' : nil)}= link_to "Conversations", conversations_path
       %li= link_to "Edit profile", edit_user_registration_path
       %li= link_to "Sign out", destroy_user_session_path, method: :delete
     - else
