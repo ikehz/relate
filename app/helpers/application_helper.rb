@@ -1,4 +1,5 @@
 module ApplicationHelper
+  TRUNCATE_LENGTH = 90.freeze
 
   def bootstrap_class_for flash_type
     case flash_type
@@ -15,4 +16,7 @@ module ApplicationHelper
     end
   end
 
+  def truncate_length
+    TRUNCATE_LENGTH
+  end
 end

@@ -1,26 +1,15 @@
-%p
-  %strong Name:
-  = @contact.name
-%p
-  %strong Conversations:
-  %table
-    %thead
+%h1= link_to @contact.name, @contact
+
+.pull-right= link_to 'Edit Contact', edit_contact_path(@contact), class: 'btn btn-default'
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Conversations
+      %th
+
+  %tbody
+    - @contact.conversations.each do |conversation|
       %tr
-        %th Date
-        %th Notes
-        %th
-        %th
-        %th
-
-    %tbody
-      - @contact.conversations.each do |conversation|
-        %tr
-          %td= conversation.date
-          %td= conversation.notes
-          %td= link_to 'Show', conversation
-          %td= link_to 'Edit', edit_conversation_path(conversation)
-          %td= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' }
-
-= link_to 'Edit', edit_contact_path(@contact)
-|
-= link_to 'Back', contacts_path
+        %td.date= conversation.date
+        %td= link_to truncate(conversation.notes, length: truncate_length), conversation
