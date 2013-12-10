@@ -1,7 +1,7 @@
 module ApplicationHelper
   TRUNCATE_LENGTH = 90.freeze
 
-  BOOTSTRAP_FLASH_TYPES = {success: 'alert-success', error: 'alert-error', alert: 'alert-block', notice: 'alert-info'}.freeze
+  BOOTSTRAP_FLASH_TYPES = {success: 'alert-success', notice: 'alert-info', alert: 'alert-warning', error: 'alert-danger'}.freeze
 
   def truncate_length
     TRUNCATE_LENGTH
