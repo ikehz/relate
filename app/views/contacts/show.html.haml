@@ -7,9 +7,16 @@
     %tr
       %th Conversations
       %th
+      %th
+      %th
 
   %tbody
     - @contact.conversations.each do |conversation|
       %tr
         %td.date= conversation.date
+        %td= truncate(conversation.contacts.map(&:name).join(", "), length: truncate_length)
         %td= link_to truncate(conversation.notes, length: truncate_length), conversation
+        %td.actions
+          = link_to 'Edit', edit_conversation_path(conversation)
+          |
+          = link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' }
