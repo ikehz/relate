@@ -26,10 +26,12 @@ describe Participant do
     expect(Participant.make(conversation: nil)).not_to be_valid
   end
 
-  describe "#contact_name" do
+  describe "#name" do
     it "returns the contact's name" do
       c = Contact.make
-      expect(Participant.make(contact: c).contact_name).to eq(c.name)
+      expect(Participant.make(contact: c).name).to eq(c.name)
     end
   end
+
+  it_behaves_like "an owned model"
 end

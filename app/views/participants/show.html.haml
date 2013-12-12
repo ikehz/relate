@@ -1,9 +1,6 @@
 %p
   %strong Name:
-  = @participant.contact_name
-%p
-  %strong Conversation:
-  = @participant.conversation
+  = @participant.name
 
 = link_to 'Edit', edit_participant_path(@participant)
 |

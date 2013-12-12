@@ -1,15 +1,23 @@
-%p
-  %strong Date:
-  = @conversation.date
+%h1= link_to "Conversation on #{@conversation.date}", @conversation
+
+.pull-right.btn-group
+  = link_to 'Add Participant', new_conversation_participant_path(@conversation), class: 'btn btn-success'
+  = link_to 'Edit Conversation', edit_conversation_path(@conversation), class: 'btn btn-default'
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Participants
+      %th
+
+  %tbody
+    - @conversation.participants.each do |participant|
+      %tr
+        %td.date= link_to participant.contact_name, participant
+        %td.actions
+          = link_to 'Edit', edit_participant_path(participant)
+          |
+          = link_to 'Remove', participant, method: :delete, data: { confirm: 'Are you sure?' }
 
 %p
-  %strong Participants:
-  = @conversation.contacts.map(&:name).join(", ")
-
-%p
-  %strong Notes:
   = @conversation.notes
-
-= link_to 'Edit', edit_conversation_path(@conversation)
-|
-= link_to 'Back', conversations_path

@@ -178,7 +178,7 @@ end
 #   let (:new_resource)
 #   let (:invalid_resource)
 #   let (:update_attribute)
-shared_examples "a RESTful resource" do
+shared_examples "a RESTful resource controller" do
   describe "GET #index" do
     it_behaves_like "GET #index" do
       let (:resources) { [resource] }

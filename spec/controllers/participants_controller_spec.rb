@@ -13,7 +13,7 @@ describe ParticipantsController do
       @unowned_participant = Participant.make!
     end
 
-    it_behaves_like "a nested RESTful resource" do
+    it_behaves_like "a nested RESTful resource controller" do
       let (:nest_resource_name) { :conversation }
       let (:nest_resource) { @conversation }
       let (:resource_name) { :participant }
@@ -21,6 +21,10 @@ describe ParticipantsController do
       let (:new_resource) { @new_participant }
       let (:invalid_resource) { @invalid_participant }
       let (:update_attribute) { :contact }
+    end
+
+    it_behaves_like "a RESTful unowned resource controller" do
+      let (:unowned_resource) { @unowned_participant }
     end
   end
 end

@@ -12,12 +12,16 @@ describe ContactsController do
       @unowned_contact = Contact.make!
     end
 
-    it_behaves_like "a RESTful resource" do
+    it_behaves_like "a RESTful resource controller" do
       let (:resource_name) { :contact }
       let (:resource) { @contact }
       let (:new_resource) { @new_contact }
       let (:invalid_resource) { @invalid_contact }
       let (:update_attribute) { :name }
+    end
+
+    it_behaves_like "a RESTful unowned resource controller" do
+      let (:unowned_resource) { @unowned_contact }
     end
   end
 end

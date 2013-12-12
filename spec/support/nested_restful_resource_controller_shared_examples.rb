@@ -2,11 +2,10 @@
 #   let (:nest_resource_name)
 #   let (:nest_resource)
 #   let (:resource_name)
-#   let (:resources)
 shared_examples "nested GET #index" do
-  it "assigns the correct resource" do
+  it "assigns the correct nest resource" do
     get :index, (nest_resource_name.to_s + '_id').to_sym => nest_resource
-    expect(assigns(resource_name.to_s.pluralize.to_sym)).to eq(resources)
+    expect(assigns(nest_resource_name.to_sym)).to eq(nest_resource)
   end
 
   it "responds successfully with 200" do
@@ -15,9 +14,9 @@ shared_examples "nested GET #index" do
     expect(response.status).to eq(200)
   end
 
-  it "renders the correct template" do
+  it "renders the nest resource show template" do
     get :index, (nest_resource_name.to_s + '_id').to_sym => nest_resource
-    expect(response).to render_template :index
+    expect(response).to render_template 'conversations/show'
   end
 end
 
@@ -109,11 +108,9 @@ end
 #   let (:new_resource)
 #   let (:invalid_resource)
 #   let (:update_attribute)
-shared_examples "a nested RESTful resource" do
+shared_examples "a nested RESTful resource controller" do
   describe "GET #index" do
-    it_behaves_like "nested GET #index" do
-      let (:resources) { [resource] }
-    end
+    it_behaves_like "nested GET #index"
   end
 
   describe "GET #new" do
