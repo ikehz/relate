@@ -13,7 +13,7 @@
   %tbody
     - @conversation.participants.each do |participant|
       %tr
-        %td.date= link_to participant.contact_name, participant
+        %td.date= link_to participant.name, participant
         %td.actions
           = link_to 'Edit', edit_participant_path(participant)
           |
