@@ -1,4 +1,5 @@
-- flash.each do |type, message|
-  %div{class: "alert #{bootstrap_class_for(type)} alert-dismissable"}
-    %button.close{type: "button", "data-dismiss" => "alert", "aria-hidden" => "true"} &times;
-    = message
+- bootstrap_flash_types.each_key do |flash_type|
+  - if flash[flash_type]
+    %div{class: "alert #{bootstrap_flash_types[flash_type]} alert-dismissable"}
+      %button.close{type: "button", "data-dismiss" => "alert", "aria-hidden" => "true"} &times;
+      = flash[flash_type]

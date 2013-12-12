@@ -1,11 +1,9 @@
-%h1 Listing conversations
+.pull-right= link_to 'New Conversation', new_conversation_path, class: 'btn btn-success'
 
-%table
+%table.table.table-hover
   %thead
     %tr
-      %th Date
-      %th Participants
-      %th Notes
+      %th Conversations
       %th
       %th
       %th
@@ -13,13 +11,10 @@
   %tbody
     - @conversations.each do |conversation|
       %tr
-        %td= conversation.date
-        %td= conversation.contacts.map(&:name).join(", ")
-        %td= conversation.notes
-        %td= link_to 'Show', conversation
-        %td= link_to 'Edit', edit_conversation_path(conversation)
-        %td= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br/
-
-= link_to 'New Conversation', new_conversation_path
+        %td.date= conversation.date
+        %td= truncate(conversation.contacts.map(&:name).join(", "), length: truncate_length)
+        %td= link_to truncate(conversation.notes, length: truncate_length), conversation
+        %td.actions
+          = link_to 'Edit', edit_conversation_path(conversation)
+          |
+          = link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' }
