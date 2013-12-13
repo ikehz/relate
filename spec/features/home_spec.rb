@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Home", type: :feature do
+describe "Home" do
   it "gets index" do
     visit '/'
     expect(page.status_code).to eq(200)
