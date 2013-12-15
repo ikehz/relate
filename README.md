@@ -28,6 +28,8 @@ When you want to run something like `rails` or `rspec`, prepend it with `foreman
 
     alias fr="foreman run bundle exec rails"
     alias fs="foreman run bundle exec rspec"
+    
+Because these are also needed for precompiling assets, I've enabled Heroku's [user-env-compile](http://devcenter.heroku.com/articles/labs-user-env-compile).
 
 ## Mail
 
