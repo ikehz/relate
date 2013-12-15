@@ -35,6 +35,7 @@ gem 'cocoon'
 ###############
 
 group :development, :test do
+  gem 'foreman'
   gem 'rspec-rails', '~> 2.0'
   gem 'fuubar'
   gem 'capybara'

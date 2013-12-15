@@ -1,3 +1,6 @@
+# For Foreman to not lose output
+$stdout.sync = true
+
 Relate::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
