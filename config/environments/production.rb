@@ -66,7 +66,7 @@ Relate::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # default_url_options set for Devise
-  config.action_mailer.default_url_options = { :host => 'relate.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'rwh-relate.herokuapp.com' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
