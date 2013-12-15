@@ -3,27 +3,12 @@ class ParticipantsController < ApplicationController
   #
   # this should come before other callbacks so as to avoid errors popping up
   before_action :authenticate_user!
-  before_action :set_participant, only: [:show, :edit, :update, :destroy]
-  before_action :set_conversation, only: [:index, :new, :create]
-
-  # GET conversation/1/participants
-  # GET conversation/1/participants.json
-  def index
-    render 'conversations/show'
-  end
-
-  # GET /participants/1
-  # GET /participants/1.json
-  def show
-  end
+  before_action :set_participant, only: [:destroy]
+  before_action :set_conversation, only: [:new, :create]
 
   # GET conversation/1/participants/new
   def new
     @participant = current_user.participants.new(conversation: @conversation)
-  end
-
-  # GET /participants/1/edit
-  def edit
   end
 
   # POST conversation/1/participants
@@ -33,25 +18,10 @@ class ParticipantsController < ApplicationController
     respond_to do |format|
       if @participant.save
         flash[:success] = 'Participant was successfully created.'
-        format.html { redirect_to @participant }
-        format.json { render action: 'show', status: :created, location: @participant }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @participant.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /participants/1
-  # PATCH/PUT /participants/1.json
-  def update
-    respond_to do |format|
-      if @participant.update(participant_params)
-        flash[:success] = 'Participant was successfully updated.'
-        format.html { redirect_to @participant }
+        format.html { redirect_to @conversation }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'new' }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
       end
     end
@@ -63,7 +33,7 @@ class ParticipantsController < ApplicationController
     @conversation = @participant.conversation
     @participant.destroy
     respond_to do |format|
-      format.html { redirect_to conversation_participants_url(@conversation) }
+      format.html { redirect_to @conversation }
       format.json { head :no_content }
     end
   end

@@ -33,19 +33,27 @@ end
 # requires:
 #   let (:unowned_resource)
 shared_examples "a RESTful unowned resource controller" do
-  describe "GET #show" do
-    it_behaves_like "GET #show unowned"
+  if described_class.method_defined?(:show)
+    describe "GET #show" do
+      it_behaves_like "GET #show unowned"
+    end
   end
 
-  describe "GET #edit" do
-    it_behaves_like "GET #edit unowned"
+  if described_class.method_defined?(:edit)
+    describe "GET #edit" do
+      it_behaves_like "GET #edit unowned"
+    end
   end
 
-  describe "PATCH #update" do
-    it_behaves_like "PATCH #update unowned"
+  if described_class.method_defined?(:update)
+    describe "PATCH #update" do
+      it_behaves_like "PATCH #update unowned"
+    end
   end
 
-  describe "DELETE #destroy" do
-    it_behaves_like "DELETE #destroy unowned"
+  if described_class.method_defined?(:destroy)
+    describe "DELETE #destroy" do
+      it_behaves_like "DELETE #destroy unowned"
+    end
   end
 end

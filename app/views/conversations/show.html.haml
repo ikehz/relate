@@ -1,7 +1,7 @@
 %h1= link_to "Conversation on #{@conversation.date}", @conversation
 
 .pull-right.btn-group
-  = link_to 'Add Participant', new_conversation_participant_path(@conversation), class: 'btn btn-success'
+  = link_to 'New Participant', new_conversation_participant_path(@conversation), class: 'btn btn-success'
   = link_to 'Edit Conversation', edit_conversation_path(@conversation), class: 'btn btn-default'
 
 %table.table.table-hover
@@ -15,9 +15,7 @@
       %tr
         %td.date= link_to participant.name, participant
         %td.actions
-          = link_to 'Edit', edit_participant_path(participant)
-          |
-          = link_to 'Remove', participant, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Delete', participant, method: :delete, data: { confirm: 'Are you sure?' }
 
 %p
   = @conversation.notes
