@@ -15,13 +15,19 @@ describe User do
   end
 
   it "is invalid with an invalid username" do
-    ['u ', '\u', 'u@u', ' ', 'U-', "u\n"].each do |username|
+    ['\u', 'u@u', ' '].each do |username|
       expect(User.make(username: username)).not_to be_valid
     end
   end
 
   it "is valid with a valid username" do
     ['u_', 'u-'].each do |username|
+      expect(User.make(username: username)).to be_valid
+    end
+  end
+
+  it "fixes an invalid username" do
+    ['u ', 'U-', "u\n"].each do |username|
       expect(User.make(username: username)).to be_valid
     end
   end
