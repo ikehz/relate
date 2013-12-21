@@ -22,7 +22,7 @@ So, we're using [Foreman](http://github.com/ddollar/foreman) to take care of the
     SECRET_KEY_BASE=fake_secret_key_base
     DEVISE_SECRET_KEY=fake_devise_secret_key
 
-(You can use the key generated in the error message above for the fake keys if you'd like.)  `.env` is ignored in `.gitignore`, so don't expect it to be under source control.
+(You can use the key generated in the error message above for the fake keys if you'd like, or `rake secret`.)  `.env` is ignored in `.gitignore`, so don't expect it to be under source control.
 
 When you want to run something like `rails` or `rspec`, prepend it with `foreman run bundle exec`.  To make my life easier, I have the following aliases in my `.bashrc` file:
 
