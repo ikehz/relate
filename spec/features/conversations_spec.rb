@@ -62,7 +62,7 @@ describe "Conversations" do
       visit conversations_path
 
       expect{
-        click_link 'Destroy'
+        click_link 'Delete'
       }.to change(Conversation, :count).by -1
 
       expect(page.status_code).to eq(200)

@@ -62,7 +62,7 @@ describe "Contacts" do
       visit contacts_path
 
       expect{
-        click_link 'Destroy'
+        click_link 'Delete'
       }.to change(Contact, :count).by -1
 
       expect(page.status_code).to eq(200)
