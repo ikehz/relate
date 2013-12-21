@@ -17,7 +17,7 @@ gem 'devise'
 gem 'omniauth'
 
 # Use HAML for views
-gem 'haml'
+gem 'haml-rails'
 
 # Use bootstrap-sass for Bootstrap framework
 # XXX this should be stable at some point
