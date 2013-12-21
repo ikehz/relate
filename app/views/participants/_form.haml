@@ -1,3 +1,3 @@
 = simple_form_for([@conversation, @participant]) do |f|
-  = f.association :contact, label_method: :name
+  = f.association :contact, collection: @contacts, label_method: :name
   = f.button :submit

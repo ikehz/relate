@@ -7,6 +7,7 @@ describe "Participants" do
     @contact = Contact.make!(owner: user)
     @conversation = Conversation.make!(owner: user)
     @participant = Participant.make!(owner: user, conversation: @conversation)
+    @unowned_contact = Contact.make!
   end
 
   context "a user" do
@@ -34,6 +35,13 @@ describe "Participants" do
       expect(current_path).to eq(conversation_path(@conversation))
       expect(page).to have_content('Participant was successfully created.')
       expect(page).to have_content(@contact.name)
+    end
+
+    it "only sees the user's contacts when creating a participant" do
+      visit new_conversation_participant_path(@conversation)
+
+      expect(page).to have_content(@contact.name)
+      expect(page).to_not have_content(@unowned_contact.name)
     end
 
     it "destroys a participant" do

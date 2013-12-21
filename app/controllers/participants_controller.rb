@@ -5,6 +5,7 @@ class ParticipantsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_participant, only: [:destroy]
   before_action :set_conversation, only: [:new, :create]
+  before_action :set_contacts, only: [:new]
 
   # GET conversation/1/participants/new
   def new
@@ -47,6 +48,11 @@ class ParticipantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_conversation
       @conversation = current_user.conversations.find(params[:conversation_id])
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_contacts
+      @contacts = current_user.contacts
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
