@@ -20,8 +20,7 @@ gem 'omniauth'
 gem 'haml-rails'
 
 # Use bootstrap-sass for Bootstrap framework
-# XXX this should be stable at some point
-gem 'bootstrap-sass', '~> 3.0.1.0.rc'
+gem 'bootstrap-sass', '~> 3.0'
 
 # Use Simple Form and Cocoon for forms
 gem 'simple_form'
