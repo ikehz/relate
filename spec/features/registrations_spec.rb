@@ -15,6 +15,7 @@ describe "Registrations" do
       fill_in 'Email', with: @new_user.email
       fill_in 'Password', with: @new_user.password, match: :prefer_exact
       fill_in 'Password confirmation', with: @new_user.password, match: :prefer_exact
+      fill_in 'Name', with: @new_user.name
       click_button 'Sign up'
 
       expect(page.status_code).to eq(200)

@@ -38,4 +38,8 @@ describe User do
     u = User.make!
     expect(User.make(email: u.email)).not_to be_valid
   end
+
+  it "is valid without a name" do
+    expect(User.make(name: nil)).to be_valid
+  end
 end
