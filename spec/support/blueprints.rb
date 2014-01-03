@@ -24,10 +24,3 @@ Participant.blueprint do |participant|
   conversation { Conversation.make(owner: object.owner) }
   contact { Contact.make(owner: object.owner) }
 end
-
-SignUp.blueprint do |sign_up|
-  email  { "sign_up#{sn}@s.com" }
-  build  { false }
-  mobilize  { false }
-  share  { false }
-end

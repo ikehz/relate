@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126205729) do
+ActiveRecord::Schema.define(version: 20140103184241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,17 +46,6 @@ ActiveRecord::Schema.define(version: 20131126205729) do
   add_index "participants", ["contact_id"], name: "index_participants_on_contact_id", using: :btree
   add_index "participants", ["conversation_id", "contact_id"], name: "index_participants_on_conversation_id_and_contact_id", unique: true, using: :btree
   add_index "participants", ["conversation_id"], name: "index_participants_on_conversation_id", using: :btree
-
-  create_table "sign_ups", force: true do |t|
-    t.string   "email",      null: false
-    t.integer  "build",      null: false
-    t.integer  "mobilize",   null: false
-    t.integer  "share",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sign_ups", ["email"], name: "index_sign_ups_on_email", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
