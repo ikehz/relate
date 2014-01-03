@@ -18,7 +18,7 @@ describe "Conversations" do
 
       expect(page.status_code).to eq(200)
       expect(current_path).to eq(conversations_path)
-      expect(page).to have_content(@conversation.notes)
+      expect(page).to have_content(@conversation.description)
     end
 
     it "creates a new conversation" do
@@ -26,14 +26,15 @@ describe "Conversations" do
 
       expect{
         click_link 'New Conversation'
+        fill_in 'Description', with: @new_conversation.description
         fill_in 'Notes', with: @new_conversation.notes
         click_button 'Create Conversation'
       }.to change(Conversation, :count).by 1
 
       expect(page.status_code).to eq(200)
-      expect(current_path).to eq(conversation_path(Conversation.find_by_notes(@new_conversation.notes)))
+      expect(current_path).to eq(conversation_path(Conversation.find_by_description(@new_conversation.description)))
       expect(page).to have_content('Conversation was successfully created.')
-      expect(page).to have_content(@new_conversation.notes)
+      expect(page).to have_content(@new_conversation.description)
     end
 
     it "shows a conversation" do
@@ -55,7 +56,6 @@ describe "Conversations" do
       expect(page.status_code).to eq(200)
       expect(current_path).to eq(conversation_path(@conversation))
       expect(page).to have_content('Conversation was successfully updated.')
-      expect(page).to have_content(@new_conversation.notes)
     end
 
     it "destroys a conversation" do
@@ -67,7 +67,7 @@ describe "Conversations" do
 
       expect(page.status_code).to eq(200)
       expect(current_path).to eq(conversations_path)
-      expect(page).to_not have_content(@conversation.notes)
+      expect(page).to_not have_content(@conversation.description)
     end
   end
 end

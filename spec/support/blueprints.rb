@@ -9,9 +9,10 @@ User.blueprint do |user|
 end
 
 Conversation.blueprint do |conversation|
+  description { "Conversation #{sn}" }
   owner
   date { Date.today }
-  notes { "Some notes #{sn}" }
+  notes { "Some notes for conversation #{sn}" }
 end
 
 Contact.blueprint do |contact|

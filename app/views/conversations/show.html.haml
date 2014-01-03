@@ -1,4 +1,4 @@
-%h1= link_to "Conversation on #{@conversation.date}", @conversation
+%h1= link_to @conversation.description, @conversation
 
 .pull-right.btn-group
   = link_to 'New Participant', new_conversation_participant_path(@conversation), class: 'btn btn-success'
