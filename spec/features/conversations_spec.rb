@@ -41,7 +41,13 @@ describe "Conversations" do
       visit conversation_path(@conversation)
 
       expect(page.status_code).to eq(200)
-      expect(page).to have_content(@conversation.notes)
+      expect(page).to have_content(@conversation.description)
+    end
+
+    it "shows notes correctly parsed as markdown" do
+      visit conversation_path(@conversation)
+
+      expect(page).to have_selector('p em')
     end
 
     it "edits a conversation" do

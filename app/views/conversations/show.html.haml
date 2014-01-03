@@ -6,5 +6,4 @@
 
 = render 'participants/table'
 
-%p
-  = @conversation.notes
+= raw notes_markdown.render(@conversation.notes)

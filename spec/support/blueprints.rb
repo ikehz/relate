@@ -12,7 +12,7 @@ Conversation.blueprint do |conversation|
   description { "Conversation #{sn}" }
   owner
   date { Date.today }
-  notes { "Some notes for conversation #{sn}" }
+  notes { "Some *awesome* notes." }
 end
 
 Contact.blueprint do |contact|
