@@ -1,5 +1,7 @@
 %h1= link_to @conversation.description, @conversation
 
+%h2= @conversation.date
+
 .pull-right.btn-group
   = link_to 'New Participant', new_conversation_participant_path(@conversation), class: 'btn btn-success'
   = link_to 'Edit Conversation', edit_conversation_path(@conversation), class: 'btn btn-default'
