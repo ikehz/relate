@@ -19,6 +19,9 @@ gem 'omniauth'
 # Use HAML for views
 gem 'haml-rails'
 
+# Use Redcarpet to render Markdown
+gem 'redcarpet'
+
 # Use bootstrap-sass for Bootstrap framework
 gem 'bootstrap-sass', '~> 3.0'
 
