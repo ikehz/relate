@@ -14,6 +14,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    @conversations = @contact.conversations
   end
 
   # GET /contacts/new

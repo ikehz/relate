@@ -1,0 +1,12 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Participants
+      %th
+
+  %tbody
+    - @participants.each do |participant|
+      %tr
+        %td.date= link_to participant.name, participant
+        %td.actions
+          = link_to 'Delete', participant, method: :delete, data: { confirm: 'Are you sure?' }

@@ -4,18 +4,7 @@
   = link_to 'New Participant', new_conversation_participant_path(@conversation), class: 'btn btn-success'
   = link_to 'Edit Conversation', edit_conversation_path(@conversation), class: 'btn btn-default'
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th Participants
-      %th
-
-  %tbody
-    - @conversation.participants.each do |participant|
-      %tr
-        %td.date= link_to participant.name, participant
-        %td.actions
-          = link_to 'Delete', participant, method: :delete, data: { confirm: 'Are you sure?' }
+= render 'participants/table'
 
 %p
   = @conversation.notes

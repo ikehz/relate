@@ -1,0 +1,18 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Conversations
+      %th
+      %th
+      %th
+
+  %tbody
+    - @conversations.each do |conversation|
+      %tr
+        %td.date= conversation.date
+        %td= truncate(conversation.contacts.map(&:name).join(", "), length: truncate_length)
+        %td= link_to truncate(conversation.description, length: truncate_length), conversation
+        %td.actions
+          = link_to 'Edit', edit_conversation_path(conversation)
+          |
+          = link_to 'Delete', conversation, method: :delete, data: { confirm: 'Are you sure?' }

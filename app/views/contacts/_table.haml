@@ -1,0 +1,14 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Contacts
+      %th
+
+  %tbody
+    - @contacts.each do |contact|
+      %tr
+        %td= link_to contact.name, contact
+        %td.actions
+          = link_to 'Edit', edit_contact_path(contact)
+          |
+          = link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }

@@ -14,6 +14,7 @@ class ConversationsController < ApplicationController
   # GET /conversations/1
   # GET /conversations/1.json
   def show
+    @participants = @conversation.participants
   end
 
   # GET /conversations/new
