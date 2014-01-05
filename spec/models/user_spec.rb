@@ -42,4 +42,22 @@ describe User do
   it "is valid without a name" do
     expect(User.make(name: nil)).to be_valid
   end
+
+  it "destroys dependent contacts" do
+    contact = Contact.make!
+    contact.owner.destroy
+    expect(Contact.where(id: contact)).not_to exist
+  end
+
+  it "destroys dependent conversations" do
+    conversation = Conversation.make!
+    conversation.owner.destroy
+    expect(Conversation.where(id: conversation)).not_to exist
+  end
+
+  it "destroys dependent participants" do
+    participant = Participant.make!
+    participant.owner.destroy
+    expect(Participant.where(id: participant)).not_to exist
+  end
 end
