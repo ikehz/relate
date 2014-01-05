@@ -6,4 +6,6 @@ class Conversation < ActiveRecord::Base
 
   validates :description, presence: true
   validates :date, presence: true
+
+  default_scope order(date: :desc)
 end

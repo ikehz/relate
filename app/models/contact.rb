@@ -5,4 +5,6 @@ class Contact < ActiveRecord::Base
   has_many :conversations, through: :participants
 
   validates :name, presence: true
+
+  default_scope order(:name)
 end
