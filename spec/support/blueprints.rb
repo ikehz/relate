@@ -27,5 +27,6 @@ Participant.blueprint do |participant|
 end
 
 Tag.blueprint do |tag|
+  owner
   name { "Tag #{sn}" }
 end

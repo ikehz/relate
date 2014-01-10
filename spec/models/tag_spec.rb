@@ -8,4 +8,6 @@ describe Tag do
   it "is invalid without a name" do
     expect(Tag.make(name: nil)).not_to be_valid
   end
+
+  it_behaves_like "an owned model"
 end
