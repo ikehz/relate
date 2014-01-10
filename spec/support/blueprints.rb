@@ -25,3 +25,7 @@ Participant.blueprint do |participant|
   conversation { Conversation.make(owner: object.owner) }
   contact { Contact.make(owner: object.owner) }
 end
+
+Tag.blueprint do |tag|
+  name { "Tag #{sn}" }
+end
