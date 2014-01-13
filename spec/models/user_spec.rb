@@ -60,4 +60,10 @@ describe User do
     participant.owner.destroy
     expect(Participant.where(id: participant)).not_to exist
   end
+
+  it "destroys dependent tags" do
+    tag = Tag.make!
+    tag.owner.destroy
+    expect(Tag.where(id: tag)).not_to exist
+  end
 end

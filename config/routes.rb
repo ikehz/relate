@@ -12,6 +12,7 @@ Relate::Application.routes.draw do
     resources :participants, shallow: true
   end
   resources :contacts
+  resources :tags
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

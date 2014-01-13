@@ -1,0 +1,14 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Tags
+      %th
+
+  %tbody
+    - @tags.each do |tag|
+      %tr
+        %td= link_to tag.name, tag
+        %td.actions
+          = link_to 'Edit', edit_tag_path(tag)
+          |
+          = link_to 'Delete', tag, method: :delete, data: { confirm: 'Are you sure?' }

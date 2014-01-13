@@ -1,0 +1,5 @@
+%h1= link_to @tag.name, @tag
+
+.pull-right= link_to 'Edit Tag', edit_tag_path(@tag), class: 'btn btn-default'
+
+= render 'conversations/table'
