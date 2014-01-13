@@ -29,4 +29,5 @@ end
 Tag.blueprint do |tag|
   owner
   name { "Tag #{sn}" }
+  conversations(1)
 end
