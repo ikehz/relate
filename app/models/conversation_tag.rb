@@ -8,4 +8,8 @@ class ConversationTag < ActiveRecord::Base
   validates :tag, presence: true, same_owner: true
 
   validates :tag, uniqueness: { :scope => :conversation }, allow_blank: true
+
+  def name
+    tag.name
+  end
 end

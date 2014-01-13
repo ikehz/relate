@@ -26,5 +26,12 @@ describe ConversationTag do
     expect(ConversationTag.make(conversation: nil)).not_to be_valid
   end
 
+  describe "#name" do
+    it "returns the tag's name" do
+      t = Tag.make
+      expect(ConversationTag.make(tag: t).name).to eq(t.name)
+    end
+  end
+
   it_behaves_like "an owned model"
 end
