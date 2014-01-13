@@ -9,5 +9,10 @@ describe Tag do
     expect(Tag.make(name: nil)).not_to be_valid
   end
 
+  it "is invalid with a duplicate name for a given owner" do
+    t = Tag.make!
+    expect(Tag.make(name: t.name, owner: t.owner)).not_to be_valid
+  end
+
   it_behaves_like "an owned model"
 end
