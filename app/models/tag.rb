@@ -1,7 +1,8 @@
 class Tag < ActiveRecord::Base
   include Owned
 
-  has_and_belongs_to_many :conversations
+  has_many :conversation_tags, dependent: :destroy
+  has_many :conversations, through: :conversation_tags
 
   validates :name, presence: true, uniqueness: { scope: :owner }
 end

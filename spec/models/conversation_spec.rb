@@ -19,5 +19,11 @@ describe Conversation do
     expect(Participant.where(id: participant)).not_to exist
   end
 
+  it "destroys dependent conversation_tags" do
+    conversation_tag = ConversationTag.make!
+    conversation_tag.conversation.destroy
+    expect(ConversationTag.where(id: conversation_tag)).not_to exist
+  end
+
   it_behaves_like "an owned model"
 end

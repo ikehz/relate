@@ -14,5 +14,11 @@ describe Tag do
     expect(Tag.make(name: t.name, owner: t.owner)).not_to be_valid
   end
 
+  it "destroys dependent conversation_tags" do
+    conversation_tag = ConversationTag.make!
+    conversation_tag.tag.destroy
+    expect(ConversationTag.where(id: conversation_tag)).not_to exist
+  end
+
   it_behaves_like "an owned model"
 end

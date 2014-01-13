@@ -29,5 +29,10 @@ end
 Tag.blueprint do |tag|
   owner
   name { "Tag #{sn}" }
-  conversations(1)
+end
+
+ConversationTag.blueprint do |conversation_tag|
+  owner
+  conversation { Conversation.make(owner: object.owner) }
+  tag { Tag.make(owner: object.owner) }
 end
