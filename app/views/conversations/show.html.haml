@@ -3,8 +3,11 @@
 %h2= @conversation.date
 
 .pull-right.btn-group
+  = link_to 'Add Tag', new_conversation_conversation_tag_path(@conversation), class: 'btn btn-success'
   = link_to 'New Participant', new_conversation_participant_path(@conversation), class: 'btn btn-success'
   = link_to 'Edit Conversation', edit_conversation_path(@conversation), class: 'btn btn-default'
+
+= render 'conversation_tags/table'
 
 = render 'participants/table'
 

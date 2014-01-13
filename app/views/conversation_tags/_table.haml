@@ -1,0 +1,12 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Tags
+      %th
+
+  %tbody
+    - @conversation_tags.each do |conversation_tag|
+      %tr
+        %td.date= link_to conversation_tag.name, conversation_tag.tag
+        %td.actions
+          = link_to 'Remove', conversation_tag, method: :delete, data: { confirm: 'Are you sure?' }

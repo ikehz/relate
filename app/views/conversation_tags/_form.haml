@@ -1,0 +1,3 @@
+= simple_form_for([@conversation, @conversation_tag]) do |f|
+  = f.association :tag, collection: @tags, label_method: :name
+  = f.button :submit, "Add Tag"

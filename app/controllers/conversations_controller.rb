@@ -14,6 +14,7 @@ class ConversationsController < ApplicationController
   # GET /conversations/1
   # GET /conversations/1.json
   def show
+    @conversation_tags = @conversation.conversation_tags
     @participants = @conversation.participants
   end
 

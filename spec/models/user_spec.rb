@@ -66,4 +66,10 @@ describe User do
     tag.owner.destroy
     expect(Tag.where(id: tag)).not_to exist
   end
+
+  it "destroys dependent conversation_tags" do
+    conversation_tag = ConversationTag.make!
+    conversation_tag.owner.destroy
+    expect(ConversationTag.where(id: conversation_tag)).not_to exist
+  end
 end

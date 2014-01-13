@@ -10,6 +10,7 @@ Relate::Application.routes.draw do
 
   resources :conversations do
     resources :participants, shallow: true
+    resources :conversation_tags, shallow: true
   end
   resources :contacts
   resources :tags
