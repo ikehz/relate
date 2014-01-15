@@ -19,7 +19,7 @@ describe "ConversationTags" do
       visit conversation_path(@conversation)
 
       expect(page.status_code).to eq(200)
-      expect(page).to have_content(@conversation_tag.name)
+      expect(page).to have_content(@conversation_tag.tag_name)
     end
 
     it "adds a tag" do
@@ -53,7 +53,7 @@ describe "ConversationTags" do
 
       expect(page.status_code).to eq(200)
       expect(current_path).to eq(conversation_path(@conversation))
-      expect(page).to_not have_content(@conversation_tag.name)
+      expect(page).to_not have_content(@conversation_tag.tag_name)
     end
   end
 end

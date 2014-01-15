@@ -7,6 +7,6 @@
   %tbody
     - @participants.each do |participant|
       %tr
-        %td.date= link_to participant.name, participant.contact
+        %td.date= link_to participant.contact_name, participant.contact
         %td.actions
           = link_to 'Delete', participant, method: :delete, data: { confirm: 'Are you sure?' }

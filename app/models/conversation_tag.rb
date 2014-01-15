@@ -9,7 +9,5 @@ class ConversationTag < ActiveRecord::Base
 
   validates :tag, uniqueness: { :scope => :conversation }, allow_blank: true
 
-  def name
-    tag.name
-  end
+  delegate :name, to: :tag, prefix: true
 end

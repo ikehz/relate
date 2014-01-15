@@ -26,10 +26,10 @@ describe ConversationTag do
     expect(ConversationTag.make(conversation: nil)).not_to be_valid
   end
 
-  describe "#name" do
+  describe "#tag_name" do
     it "returns the tag's name" do
       t = Tag.make
-      expect(ConversationTag.make(tag: t).name).to eq(t.name)
+      expect(ConversationTag.make(tag: t).tag_name).to eq(t.name)
     end
   end
 

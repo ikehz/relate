@@ -19,7 +19,7 @@ describe "Participants" do
       visit conversation_path(@conversation)
 
       expect(page.status_code).to eq(200)
-      expect(page).to have_content(@participant.name)
+      expect(page).to have_content(@participant.contact_name)
     end
 
     it "creates a new participant" do
@@ -53,7 +53,7 @@ describe "Participants" do
 
       expect(page.status_code).to eq(200)
       expect(current_path).to eq(conversation_path(@conversation))
-      expect(page).to_not have_content(@participant.name)
+      expect(page).to_not have_content(@participant.contact_name)
     end
   end
 end

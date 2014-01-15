@@ -10,7 +10,9 @@
     - @conversations.each do |conversation|
       %tr
         %td.date= conversation.date
-        %td= truncate(conversation.contacts.map(&:name).join(", "), length: truncate_length)
+        // TODO this should be in a helper function
+        %td= truncate(conversation.participants.map(&:contact_name).join(", "), length: truncate_length)
+        // TODO this should be in a helper function
         %td= link_to truncate(conversation.description, length: truncate_length), conversation
         %td.actions
           = link_to 'Edit', edit_conversation_path(conversation)
