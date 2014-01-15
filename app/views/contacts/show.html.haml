@@ -3,3 +3,5 @@
 .pull-right= link_to 'Edit Contact', edit_contact_path(@contact), class: 'btn btn-default'
 
 = render 'conversations/table'
+
+= raw render_markdown(@contact.notes)

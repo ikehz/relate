@@ -18,6 +18,7 @@ end
 Contact.blueprint do |contact|
   owner
   name { "Contact Person #{sn}" }
+  notes { "Some *awesome* notes." }
 end
 
 Participant.blueprint do |participant|

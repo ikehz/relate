@@ -27,6 +27,7 @@ describe "Contacts" do
       expect{
         click_link 'New Contact'
         fill_in 'Name', with: @new_contact.name
+        fill_in 'Notes', with: @new_contact.notes
         click_button 'Create Contact'
       }.to change(Contact, :count).by 1
 
