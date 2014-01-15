@@ -6,13 +6,11 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :edit, :update, :destroy]
 
   # GET /conversations
-  # GET /conversations.json
   def index
     @conversations = current_user.conversations
   end
 
   # GET /conversations/1
-  # GET /conversations/1.json
   def show
     @conversation_tags = @conversation.conversation_tags
     @participants = @conversation.participants
@@ -28,43 +26,35 @@ class ConversationsController < ApplicationController
   end
 
   # POST /conversations
-  # POST /conversations.json
   def create
     @conversation = current_user.conversations.new(conversation_params)
     respond_to do |format|
       if @conversation.save
         flash[:success] = 'Conversation was successfully created.'
         format.html { redirect_to @conversation }
-        format.json { render action: 'show', status: :created, location: @conversation }
       else
         format.html { render action: 'new' }
-        format.json { render json: @conversation.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /conversations/1
-  # PATCH/PUT /conversations/1.json
   def update
     respond_to do |format|
       if @conversation.update(conversation_params)
         flash[:success] = 'Conversation was successfully updated.'
         format.html { redirect_to @conversation }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @conversation.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /conversations/1
-  # DELETE /conversations/1.json
   def destroy
     @conversation.destroy
     respond_to do |format|
       format.html { redirect_to conversations_url }
-      format.json { head :no_content }
     end
   end
 

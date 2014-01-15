@@ -13,29 +13,24 @@ class ParticipantsController < ApplicationController
   end
 
   # POST conversation/1/participants
-  # POST conversation/1/participants.json
   def create
     @participant = current_user.participants.new(participant_params.merge conversation: @conversation)
     respond_to do |format|
       if @participant.save
         flash[:success] = 'Participant was successfully created.'
         format.html { redirect_to @conversation }
-        format.json { head :no_content }
       else
         format.html { render action: 'new' }
-        format.json { render json: @participant.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /participants/1
-  # DELETE /participants/1.json
   def destroy
     @conversation = @participant.conversation
     @participant.destroy
     respond_to do |format|
       format.html { redirect_to @conversation }
-      format.json { head :no_content }
     end
   end
 

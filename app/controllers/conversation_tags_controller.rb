@@ -13,29 +13,24 @@ class ConversationTagsController < ApplicationController
   end
 
   # POST conversation/1/conversation_tags
-  # POST conversation/1/conversation_tags.json
   def create
     @conversation_tag = current_user.conversation_tags.new(conversation_tag_params.merge conversation: @conversation)
     respond_to do |format|
       if @conversation_tag.save
         flash[:success] = 'Tag was successfully added.'
         format.html { redirect_to @conversation }
-        format.json { head :no_content }
       else
         format.html { render action: 'new' }
-        format.json { render json: @conversation_tag.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /conversation_tags/1
-  # DELETE /conversation_tags/1.json
   def destroy
     @conversation = @conversation_tag.conversation
     @conversation_tag.destroy
     respond_to do |format|
       format.html { redirect_to @conversation }
-      format.json { head :no_content }
     end
   end
 
