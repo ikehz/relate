@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
 	       :confirmable, :lockable, :timeoutable, :omniauthable
 
-  validates :username, presence: true, format: { with: /\A[0-9a-z_\-]+\z/ }, uniqueness: true
+  validates :username, presence: true, format: { with: /\A[0-9a-z_\-]+\z/, message: "may only contain lowercase letters, numbers, '_', and '-'" }, uniqueness: true
 end
