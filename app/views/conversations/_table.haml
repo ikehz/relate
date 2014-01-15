@@ -5,11 +5,15 @@
       %th
       %th
       %th
+      %th
 
   %tbody
     - @conversations.each do |conversation|
       %tr
         %td.date= conversation.date
+        %td
+          - conversation.conversation_tags.each do |conversation_tag|
+            .label.label-default= conversation_tag.tag_name
         %td= link_to conversation.description, conversation
         %td
           %small.text-muted= truncate_participants(conversation.participants)
