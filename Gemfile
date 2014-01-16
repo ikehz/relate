@@ -25,9 +25,8 @@ gem 'redcarpet'
 # Use bootstrap-sass for Bootstrap framework
 gem 'bootstrap-sass'
 
-# Use Simple Form and Cocoon for forms
+# Use Simple Form for forms
 gem 'simple_form'
-gem 'cocoon'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
