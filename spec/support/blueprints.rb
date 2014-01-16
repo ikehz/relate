@@ -8,6 +8,15 @@ User.blueprint do |user|
   confirmed_at { Time.now }
 end
 
+Organization.blueprint do
+  title { "Organization #{sn}" }
+end
+
+Membership.blueprint do
+  organization
+  user
+end
+
 Conversation.blueprint do |conversation|
   description { "Conversation #{sn}" }
   owner

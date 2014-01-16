@@ -43,6 +43,12 @@ describe User do
     expect(User.make(name: nil)).to be_valid
   end
 
+  it "destroys dependent memberships" do
+    membership = Membership.make!
+    membership.user.destroy
+    expect(Membership.where(id: membership)).not_to exist
+  end
+
   it "destroys dependent contacts" do
     contact = Contact.make!
     contact.owner.destroy

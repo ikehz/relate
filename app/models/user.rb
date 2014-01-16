@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :memberships, dependent: :destroy
+  has_many :organizations, through: :memberships
+
   has_many :contacts, foreign_key: "owner_id", dependent: :destroy
   has_many :conversations, foreign_key: "owner_id", dependent: :destroy
   has_many :participants, foreign_key: "owner_id", dependent: :destroy
