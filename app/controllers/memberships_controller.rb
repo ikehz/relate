@@ -27,12 +27,19 @@ class MembershipsController < ApplicationController
 
   # DELETE /memberships/1
   def destroy
-    @user = @membership.user
-    @membership.destroy
-    respond_to do |format|
-      if @user == current_user
-        format.html { redirect_to root_url }
-      else
+    if @organization.users.size > 1
+      @user = @membership.user
+      @membership.destroy
+      respond_to do |format|
+        if @user == current_user
+          format.html { redirect_to root_url }
+        else
+          format.html { redirect_to @organization }
+        end
+      end
+    else
+      respond_to do |format|
+        flash[:alert] = 'You are the only member of this organization, so you must delete the organization instead of leaving it.'
         format.html { redirect_to @organization }
       end
     end

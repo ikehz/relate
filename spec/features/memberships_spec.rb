@@ -60,5 +60,23 @@ describe "Memberships" do
       expect(page.status_code).to eq(200)
       expect(current_path).to eq(root_path)
     end
+
+    context "as the only user in an organization" do
+      before do
+        @another_user.destroy
+      end
+
+      it "cannot leave" do
+        visit organization_path(@organization)
+
+        expect{
+          click_link 'Leave'
+        }.to_not change(Membership, :count)
+
+        expect(page.status_code).to eq(200)
+        expect(current_path).to eq(organization_path(@organization))
+        expect(page).to have_content('You are the only member of this organization, so you must delete the organization instead of leaving it.')
+      end
+    end
   end
 end
