@@ -1,0 +1,14 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Organizations
+      %th
+
+  %tbody
+    - @organizations.each do |organization|
+      %tr
+        %td= link_to organization.title, organization
+        %td.actions
+          = link_to 'Edit', edit_organization_path(organization)
+          |
+          = link_to 'Delete', organization, method: :delete, data: { confirm: 'Are you sure?' }
