@@ -9,7 +9,7 @@ Relate::Application.routes.draw do
   root 'home#index'
 
   resources :organizations do
-    resources :memberships, shallow: true
+    resources :memberships
   end
   resources :conversations do
     resources :participants, shallow: true

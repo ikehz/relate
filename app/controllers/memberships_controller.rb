@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
   # this should come before other callbacks so as to avoid errors popping up
   before_action :authenticate_user!
   before_action :set_membership, only: [:destroy]
-  before_action :set_organization, only: [:new, :create]
+  before_action :set_organization
   before_action :set_users, only: [:new]
 
   # GET organization/1/memberships/new
@@ -26,17 +26,22 @@ class MembershipsController < ApplicationController
   end
 
   # DELETE /memberships/1
-  # def destroy
-  #   @membership.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to root }
-  #   end
-  # end
+  def destroy
+    @user = @membership.user
+    @membership.destroy
+    respond_to do |format|
+      if @user == current_user
+        format.html { redirect_to root_url }
+      else
+        format.html { redirect_to @organization }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_membership
-      @membership = current_user.memberships.find(params[:id])
+      @membership = Membership.find(params[:id])
     end
 
     # Use callbacks to share common setup or constraints between actions.

@@ -3,6 +3,7 @@
     %li= link_to "Home", root_path
 
     - if user_signed_in?
+      %li{class: (['organizations', 'memberships'].include?(params[:controller]) ? 'active' : nil)}= link_to "Organizations", organizations_path
       %li{class: (['contacts'].include?(params[:controller]) ? 'active' : nil)}= link_to "Contacts", contacts_path
       %li{class: (['conversations', 'participants'].include?(params[:controller]) ? 'active' : nil)}= link_to "Conversations", conversations_path
       %li{class: (['tags'].include?(params[:controller]) ? 'active' : nil)}= link_to "Tags", tags_path

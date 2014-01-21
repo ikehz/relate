@@ -38,6 +38,27 @@ describe "Memberships" do
       expect(page).to have_content(@user.username)
     end
 
-    it "removes a user"
+    it "removes a user" do
+      visit organization_path(@organization)
+
+      expect{
+        click_link 'Remove'
+      }.to change(Membership, :count).by -1
+
+      expect(page.status_code).to eq(200)
+      expect(current_path).to eq(organization_path(@organization))
+      expect(page).to_not have_content(@another_user.username)
+    end
+
+    it "leaves" do
+      visit organization_path(@organization)
+
+      expect{
+        click_link 'Leave'
+      }.to change(Membership, :count).by -1
+
+      expect(page.status_code).to eq(200)
+      expect(current_path).to eq(root_path)
+    end
   end
 end

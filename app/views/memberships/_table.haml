@@ -2,8 +2,11 @@
   %thead
     %tr
       %th Users
+      %th
 
   %tbody
     - @memberships.each do |membership|
       %tr
         %td= membership.user_username
+        %td.actions
+          = link_to (membership.user == current_user ? 'Leave' : 'Remove'), [@organization, membership], method: :delete, data: { confirm: 'Are you sure?' }
