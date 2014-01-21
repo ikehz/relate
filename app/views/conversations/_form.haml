@@ -1,5 +1,5 @@
 = simple_form_for(@conversation) do |f|
   = f.input :description, autofocus: true
   = f.input :date
-  = f.input :notes, :input_html => { :rows => 14 }
+  = f.input :notes, :input_html => { :rows => 14 }, hint: markdown_hint
   = f.button :submit
