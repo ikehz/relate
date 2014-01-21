@@ -6,4 +6,6 @@ class Membership < ActiveRecord::Base
   validates :organization, presence: true
 
   validates :organization, uniqueness: { :scope => :user }, allow_blank: true
+
+  delegate :username, to: :user, prefix: true
 end

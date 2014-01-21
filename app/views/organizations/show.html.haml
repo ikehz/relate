@@ -1,4 +1,7 @@
 %h1= link_to @organization.title, @organization
 
 .pull-right.btn-group
+  = link_to 'Add User', new_organization_membership_path(@organization), class: 'btn btn-success'
   = link_to 'Edit Organization', edit_organization_path(@organization), class: 'btn btn-default'
+
+= render 'memberships/table'

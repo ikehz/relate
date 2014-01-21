@@ -12,6 +12,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1
   def show
+    @memberships = @organization.memberships
   end
 
   # GET /organizations/new

@@ -17,4 +17,11 @@ describe Membership do
   it "is invalid without a organization" do
     expect(Membership.make(organization: nil)).not_to be_valid
   end
+
+  describe "#user_username" do
+    it "returns the user's username" do
+      u = User.make
+      expect(Membership.make(user: u).user_username).to eq(u.username)
+    end
+  end
 end

@@ -8,7 +8,9 @@ Relate::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :organizations
+  resources :organizations do
+    resources :memberships, shallow: true
+  end
   resources :conversations do
     resources :participants, shallow: true
     resources :conversation_tags, shallow: true
