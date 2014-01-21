@@ -7,6 +7,6 @@
   %tbody
     - @conversation_tags.each do |conversation_tag|
       %tr
-        %td.date= link_to conversation_tag.tag_name, conversation_tag.tag
+        %td= link_to conversation_tag.tag_name, conversation_tag.tag
         %td.actions
           = link_to 'Remove', conversation_tag, method: :delete, data: { confirm: 'Are you sure?' }
