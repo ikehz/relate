@@ -1,4 +1,4 @@
 = simple_form_for(@contact) do |f|
   = f.input :name, autofocus: true
-  = f.input :notes, :input_html => { :rows => 14 }
+  = f.input :notes, :input_html => { :rows => 14 }, hint: markdown_hint
   = f.button :submit

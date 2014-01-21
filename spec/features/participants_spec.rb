@@ -45,7 +45,7 @@ describe "Participants" do
     end
 
     it "destroys a participant" do
-      visit conversation_path(@participant.conversation)
+      visit conversation_path(@conversation)
 
       expect{
         click_link 'Delete'

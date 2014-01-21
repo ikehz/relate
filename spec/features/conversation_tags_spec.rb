@@ -45,7 +45,7 @@ describe "ConversationTags" do
     end
 
     it "removes a tag" do
-      visit conversation_path(@conversation_tag.conversation)
+      visit conversation_path(@conversation)
 
       expect{
         click_link 'Remove'
